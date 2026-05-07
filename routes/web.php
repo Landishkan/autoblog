@@ -3,9 +3,13 @@
 use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Post;
+use App\Models\Review;
+
 Route::get('/', function () {
-    // Берем только опубликованные машины
-    $cars = Car::where('is_published', true)->get(); 
-    
-    return view('welcome', ['cars' => $cars]);
+    return view('welcome', [
+        'cars' => Car::where('is_published', true)->take(6)->get(),
+        'posts' => Post::latest()->take(3)->get(), // Берем 3 последние статьи
+        'reviews' => Review::latest()->take(3)->get(), // Берем 3 последних отзыва
+    ]);
 });

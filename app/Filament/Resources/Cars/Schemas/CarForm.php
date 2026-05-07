@@ -20,6 +20,7 @@ class CarForm
 \Filament\Forms\Components\FileUpload::make('image')
     ->image() // Разрешаем только картинки
     ->directory('car-photos') // Папка, куда полетят файлы
+    ->disk('public')
     ->label('Фото машины'),
             \Filament\Forms\Components\TextInput::make('year')
                 ->numeric()
