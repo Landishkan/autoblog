@@ -5,7 +5,7 @@
     <title>АвтоБлог</title>
     <script src="https://cdn.tailwindcss.com"></script> </head>
 <body class="bg-gray-100 p-8">
-    <h1 class="text-3xl font-bold mb-8">Наши автомобили/=/</h1>
+    <h1 class="text-3xl font-bold mb-8">Наши автомобили</h1>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     @foreach($cars as $car)
