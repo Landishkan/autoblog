@@ -7,99 +7,116 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#1E1E1E] text-[#B0B0B0] font-['Inter'] antialiased">
+<body class="bg-[#FBF7F0] text-[#3E2723] font-['Manrope'] antialiased">
 
     {{-- Шапка --}}
-    <header class="bg-[#111] border-b border-gray-800 sticky top-0 z-50">
+    <header class="bg-[#2C1810]/95 backdrop-blur-md border-b border-[#C8963E]/20 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="/" class="text-2xl font-bold text-white tracking-tight">
-                    Avto<span class="text-[#C79A2C]">Blog</span>
+            <div class="flex items-center justify-between h-18">
+                <a href="/" class="text-2xl font-extrabold tracking-tight">
+                    <span class="text-[#FBF7F0]">Avto</span><span class="text-[#C8963E]">Blog</span>
                 </a>
-                <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="/sell" class="text-gray-300 hover:text-white transition-colors text-sm">Продать быстро</a>
-                    <a href="/trade-in" class="text-gray-300 hover:text-[#1E90FF] transition-colors text-sm">Trade‑In</a>
-                    <a href="/credit" class="text-gray-300 hover:text-[#1E90FF] transition-colors text-sm">Кредит</a>
-                    <a href="/how-it-works" class="text-gray-300 hover:text-[#1E90FF] transition-colors text-sm">Как это работает</a>
-                    <a href="/blog" class="text-gray-300 hover:text-[#1E90FF] transition-colors text-sm">Блог</a>
-                    <a href="/reviews" class="text-gray-300 hover:text-[#1E90FF] transition-colors text-sm">Отзывы</a>
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="text-[#FBF7F0]/80 hover:text-[#C8963E] transition-colors text-sm font-medium">Продать быстро</a>
+                    <a href="#" class="text-[#FBF7F0]/80 hover:text-[#C8963E] transition-colors text-sm font-medium">Trade-In</a>
+                    <a href="#" class="text-[#FBF7F0]/80 hover:text-[#C8963E] transition-colors text-sm font-medium">Кредит</a>
+                    <a href="#" class="text-[#FBF7F0]/80 hover:text-[#C8963E] transition-colors text-sm font-medium">Блог</a>
+                    <a href="#" class="text-[#FBF7F0]/80 hover:text-[#C8963E] transition-colors text-sm font-medium">Отзывы</a>
                 </nav>
-                <a href="/sell" class="hidden lg:inline-flex bg-[#C79A2C] hover:bg-[#D4AF37] text-black font-semibold px-5 py-2 rounded-lg text-sm transition-all shadow-lg shadow-[#C79A2C]/20">
+                <a href="#" class="hidden lg:inline-flex bg-[#C8963E] hover:bg-[#D4A84B] text-white font-bold px-6 py-3 rounded-full text-sm transition-all shadow-lg shadow-[#C8963E]/20 hover:shadow-[#C8963E]/40">
                     Оценить авто
                 </a>
             </div>
         </div>
     </header>
 
-    {{-- Hero-секция --}}
-    <section class="pt-20 pb-16 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-                Раскроем реальную стоимость<br>
-                <span class="bg-gradient-to-r from-[#C79A2C] to-[#D4AF37] bg-clip-text text-transparent">вашего автомобиля</span>
+    {{-- Hero --}}
+    <section class="relative pt-28 pb-20 px-4 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#2C1810]/5 to-transparent pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-[#0D7377]/10 text-[#0D7377] text-xs font-bold uppercase tracking-widest mb-6">
+                Онлайн-аукцион для продажи авто
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-[#2C1810] leading-none mb-6">
+                Продайте авто<br>
+                <span class="text-[#C8963E]">за 2 часа</span> без перекупов
             </h1>
-            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-                Продайте или обменяйте за 1 день. AvtoBlog организует закрытый онлайн-аукцион среди тысяч байеров.
+            <p class="text-lg text-[#3E2723]/60 mb-10 max-w-xl mx-auto leading-relaxed">
+                Тысячи дилеров торгуются за вашу машину онлайн. Вы просто смотрите и выбираете лучшую цену.
             </p>
-            <div class="bg-[#2C2C2C] border border-gray-700 rounded-2xl p-6 max-w-xl mx-auto shadow-xl">
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <input
-                        type="text"
-                        placeholder="Введите госномер, например А123БВ177"
-                        class="flex-1 bg-[#1E1E1E] border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#C79A2C] transition-colors"
-                    >
-                    <button class="bg-[#C79A2C] hover:bg-[#D4AF37] text-black font-semibold px-6 py-3 rounded-lg transition-all whitespace-nowrap shadow-lg">
-                        Узнать цену
-                    </button>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+                <input
+                    type="text"
+                    placeholder="Госномер, например А123БВ177"
+                    class="flex-1 bg-white border border-[#C8963E]/20 rounded-full px-6 py-4 text-[#2C1810] placeholder-[#3E2723]/40 focus:outline-none focus:border-[#C8963E] focus:ring-4 focus:ring-[#C8963E]/10 transition-all shadow-sm"
+                >
+                <button class="bg-[#C8963E] hover:bg-[#B8860B] text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-[#C8963E]/25 hover:shadow-xl whitespace-nowrap">
+                    Узнать цену
+                </button>
+            </div>
+            <div class="flex items-center justify-center mt-4 space-x-4 text-xs text-[#3E2723]/40">
+                <span>Яндекс</span>
+                <span>Сбер</span>
+                <span>Альфа</span>
+                <span>Т-Банк</span>
             </div>
         </div>
     </section>
 
     {{-- Карточки автомобилей --}}
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <h2 class="text-3xl font-bold text-white mb-10">Наши автомобили</h2>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <p class="text-[#0D7377] text-xs font-bold uppercase tracking-widest mb-2">Каталог</p>
+                <h2 class="text-4xl font-extrabold text-[#2C1810]">Наши автомобили</h2>
+            </div>
+            <a href="#" class="hidden sm:inline-flex items-center text-[#0D7377] font-semibold text-sm hover:underline">
+                Смотреть все &rarr;
+            </a>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($cars as $car)
-                <div class="flex flex-col bg-[#2C2C2C] rounded-2xl shadow-xl overflow-hidden border border-gray-700 hover:border-[#C79A2C]/50 transition-all duration-300 hover:-translate-y-1">
+                <div class="group flex flex-col bg-white rounded-3xl shadow-md overflow-hidden border border-[#C8963E]/10 transition-all duration-500 hover:shadow-xl hover:shadow-[#C8963E]/10 hover:-translate-y-1">
                     
-                    <div class="relative h-56 w-full bg-gray-700">
+                    <div class="relative h-56 w-full bg-[#F5EDE3] overflow-hidden">
                         @if($car->image)
-                            <img src="{{ Storage::url($car->image) }}" class="w-full h-full object-cover" alt="{{ $car->model }}">
+                            <img src="{{ Storage::url($car->image) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="{{ $car->model }}">
                         @else
-                            <div class="flex items-center justify-center h-full text-gray-500">Нет фото</div>
+                            <div class="flex items-center justify-center h-full text-[#C8963E]/30">
+                                <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                            </div>
                         @endif
                         
-                        <div class="absolute top-3 right-3 px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-wider shadow-md 
-                            {{ $car->status === 'available' ? 'bg-[#1E90FF]' : 'bg-red-500' }} text-white">
+                        <div class="absolute top-4 right-4 px-3 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider
+                            {{ $car->status === 'available' ? 'bg-[#0D7377]' : 'bg-[#C8963E]/80' }} text-white shadow-lg">
                             {{ $car->status === 'available' ? 'В наличии' : 'Продано' }}
                         </div>
                     </div>
 
                     <div class="p-6 flex flex-col flex-grow">
-                        <div class="mb-4">
-                            <h2 class="text-xl font-bold text-white leading-tight">
+                        <div class="mb-2">
+                            <h3 class="text-xl font-bold text-[#2C1810] leading-tight">
                                 {{ $car->brand }} {{ $car->model }}
-                            </h2>
-                            <p class="text-gray-400 text-sm font-medium">{{ $car->year }} года выпуска</p>
+                            </h3>
+                            <p class="text-[#3E2723]/50 text-sm font-medium">{{ $car->year }} г.</p>
                         </div>
 
-                        <p class="text-gray-400 text-sm line-clamp-3 mb-6">
+                        <p class="text-[#3E2723]/60 text-sm line-clamp-2 mb-6 leading-relaxed">
                             {{ $car->description ?? 'Описание уточняйте у менеджера' }}
                         </p>
 
-                        <div class="mt-auto">
+                        <div class="mt-auto pt-4 border-t border-[#C8963E]/10">
                             <div class="flex items-end justify-between mb-4">
-                                <span class="text-gray-500 text-xs uppercase font-bold">Цена выкупа</span>
-                                <span class="text-2xl font-black text-[#C79A2C]">
+                                <span class="text-[#3E2723]/40 text-xs uppercase font-bold">Цена выкупа</span>
+                                <span class="text-2xl font-extrabold text-[#C8963E]">
                                     {{ number_format($car->price, 0, '.', ',') }} ₽
                                 </span>
                             </div>
                             
-                            <button class="w-full bg-[#C79A2C] hover:bg-[#D4AF37] text-black font-extrabold py-4 rounded-xl uppercase text-xs tracking-widest transition-all shadow-lg active:scale-95">
-                                Узнать стоимость выкупа
+                            <button class="w-full bg-[#2C1810] hover:bg-[#3E2723] text-white font-bold py-4 rounded-2xl uppercase text-xs tracking-wider transition-all shadow-lg active:scale-[0.98]">
+                                Узнать стоимость
                             </button>
                         </div>
                     </div>
@@ -109,39 +126,45 @@
     </section>
 
     {{-- Блог --}}
-    <section class="bg-[#1A1A1A] py-20 px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black text-white mb-12 text-center uppercase tracking-tighter">
-                Экспертный блог <span class="text-[#C79A2C]">AutoBlog</span>
-            </h2>
+    <section class="bg-[#2C1810] py-24 px-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-[#C8963E]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#0D7377]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <p class="text-[#C8963E] text-xs font-bold uppercase tracking-widest mb-3">Блог</p>
+                <h2 class="text-5xl font-extrabold text-[#FBF7F0] leading-tight">
+                    Экспертный взгляд<br><span class="text-[#C8963E]">AutoBlog</span>
+                </h2>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($posts as $post)
-                <article class="flex flex-col bg-[#262626] rounded-2xl overflow-hidden border border-white/5 transition-all duration-300 hover:border-[#1E90FF]/50 hover:-translate-y-1 group">
+                <article class="group flex flex-col bg-[#3E2723] rounded-3xl overflow-hidden border border-[#C8963E]/10 transition-all duration-500 hover:border-[#C8963E]/40 hover:-translate-y-1">
                     <div class="relative h-52 overflow-hidden">
                         @if($post->image)
-                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="{{ $post->title }}">
+                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="{{ $post->title }}">
                         @else
-                            <div class="w-full h-full bg-gray-700 flex items-center justify-center text-gray-500">Нет фото</div>
+                            <div class="w-full h-full bg-[#2C1810] flex items-center justify-center text-[#C8963E]/20">
+                                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                            </div>
                         @endif
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#262626] to-transparent opacity-60"></div>
-                        <span class="absolute bottom-4 left-6 bg-[#1E90FF] text-white text-[10px] font-black uppercase px-3 py-1 rounded-full">
+                        <span class="absolute bottom-4 left-6 bg-[#0D7377] text-white text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-full tracking-wider">
                             {{ $post->category ?? 'Статья' }}
                         </span>
                     </div>
 
                     <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-white leading-snug group-hover:text-[#C79A2C] transition-colors">
+                        <h3 class="text-xl font-bold text-[#FBF7F0] leading-snug group-hover:text-[#C8963E] transition-colors">
                             {{ $post->title }}
                         </h3>
-                        <p class="text-gray-400 mt-4 text-sm leading-relaxed line-clamp-3">
+                        <p class="text-[#FBF7F0]/50 mt-4 text-sm leading-relaxed line-clamp-3">
                             {{ strip_tags($post->content) }}
                         </p>
                         
                         <div class="mt-auto pt-6">
-                            <a href="#" class="text-xs font-bold text-[#1E90FF] uppercase tracking-widest flex items-center group-hover:translate-x-2 transition-transform">
-                                Читать статью 
-                                <svg class="w-4 h-4 ml-2 text-[#C79A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            <a href="#" class="inline-flex items-center text-sm font-bold text-[#C8963E] uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                                Читать
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                             </a>
                         </div>
                     </div>
@@ -152,33 +175,36 @@
     </section>
 
     {{-- Отзывы --}}
-    <section class="bg-[#121212] py-20 px-6">
+    <section class="bg-[#F5EDE3] py-24 px-6">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black text-white mb-4 text-center uppercase tracking-tighter">
-                Реальные кейсы
-            </h2>
-            <p class="text-gray-500 text-center mb-16 max-w-2xl mx-auto">Посмотрите, какую выгоду получили наши клиенты при продаже авто через аукцион по сравнению с обычным трейд-ин.</p>
+            <div class="text-center mb-16">
+                <p class="text-[#0D7377] text-xs font-bold uppercase tracking-widest mb-3">Кейсы</p>
+                <h2 class="text-5xl font-extrabold text-[#2C1810] leading-tight">
+                    Реальные истории<br><span class="text-[#C8963E]">наших клиентов</span>
+                </h2>
+                <p class="text-[#3E2723]/50 mt-4 max-w-xl mx-auto">Выгода по сравнению с обычным трейд-ин</p>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($reviews as $review)
-                <div class="bg-[#1E1E1E] p-10 rounded-3xl border border-gray-700 relative flex flex-col shadow-2xl transition-all duration-300 hover:border-[#C79A2C]/50 hover:-translate-y-1">
-                    <div class="absolute -top-4 left-10 bg-[#C79A2C] p-3 rounded-xl shadow-lg">
-                        <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21V18c0-1.1046.8954-2 2-2h3c.5523 0 1-.4477 1-1V9c0-.5523-.4477-1-1-1h-4c-.5523 0-1-.4477-1-1v3c0 .5523-.4477 1-1 1h-2c-.5523 0-1-.4477-1-1V9c0-1.1046.8954-2 2-2h7c1.6569 0 3 1.3431 3 3v5c0 2.7614-2.2386 5-5 5h-3v1zM5.017 21V18c0-1.1046.89543-2 2-2h3c.5523 0 1-.4477 1-1V9c0-.5523-.4477-1-1-1H6.017c-.55228 0-1-.4477-1-1v3c0 .5523-.44772 1-1 1h-2c-.55228 0-1-.4477-1-1V9c0-1.1046.89543-2 2-2h7c1.6569 0 3 1.3431 3 3v5c0 2.7614-2.2386 5-5 5h-3v1z"/></svg>
+                <div class="bg-white p-8 rounded-3xl border border-[#C8963E]/10 relative flex flex-col shadow-lg transition-all duration-500 hover:shadow-xl hover:shadow-[#C8963E]/10 hover:-translate-y-1">
+                    <div class="absolute -top-5 left-8 w-12 h-12 bg-[#0D7377] rounded-2xl flex items-center justify-center shadow-lg rotate-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-3c0-1.105.895-2 2-2h3c.552 0 1-.448 1-1V9c0-.552-.448-1-1-1h-4c-.552 0-1-.448-1-1v3c0 .552-.448 1-1 1h-2c-.552 0-1-.448-1-1V9c0-1.105.895-2 2-2h7c1.657 0 3 1.343 3 3v5c0 2.761-2.239 5-5 5h-3v1zm-9 0v-3c0-1.105.895-2 2-2h3c.552 0 1-.448 1-1V9c0-.552-.448-1-1-1H6c-.552 0-1-.448-1-1v3c0 .552-.448 1-1 1H2c-.552 0-1-.448-1-1V9c0-1.105.895-2 2-2h7c1.657 0 3 1.343 3 3v5c0 2.761-2.239 5-5 5H5v1z"/></svg>
                     </div>
 
-                    <p class="text-gray-300 italic leading-relaxed text-lg mb-8">
+                    <p class="text-[#3E2723]/70 italic leading-relaxed text-lg mt-4 mb-6">
                         "{{ $review->text }}"
                     </p>
 
-                    <div class="mt-auto border-t border-gray-700 pt-6">
+                    <div class="mt-auto border-t border-[#C8963E]/10 pt-5">
                         <div class="flex items-center justify-between">
                             <div>
-                                <div class="font-bold text-white text-lg">{{ $review->client_name }}</div>
-                                <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">{{ $review->car_model }}</div>
+                                <div class="font-bold text-[#2C1810] text-lg">{{ $review->client_name }}</div>
+                                <div class="text-xs text-[#3E2723]/50 uppercase tracking-widest mt-0.5">{{ $review->car_model }}</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-[10px] text-gray-500 uppercase font-bold">Выгода</div>
-                                <div class="text-[#C79A2C] font-black text-xl">
+                                <div class="text-[10px] text-[#3E2723]/40 uppercase font-bold">Выгода</div>
+                                <div class="text-[#0D7377] font-extrabold text-xl">
                                     +{{ number_format($review->profit_amount, 0, '.', ' ') }} ₽
                                 </div>
                             </div>
@@ -191,41 +217,41 @@
     </section>
 
     {{-- Подвал --}}
-    <footer class="bg-[#111] border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer class="bg-[#2C1810] border-t border-[#C8963E]/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div>
-                    <span class="text-xl font-bold text-white">Avto<span class="text-[#C79A2C]">Blog</span></span>
-                    <p class="mt-3 text-gray-400 text-sm leading-relaxed">
-                        Прозрачный сервис продажи и обмена автомобилей. Аукцион, трейд-ин и кредитование в одном месте.
+                    <span class="text-2xl font-extrabold text-[#FBF7F0]">Avto<span class="text-[#C8963E]">Blog</span></span>
+                    <p class="mt-4 text-[#FBF7F0]/50 text-sm leading-relaxed max-w-xs">
+                        Прозрачный сервис продажи и обмена авто. Аукцион, трейд-ин и кредитование в одном месте.
                     </p>
-                    <p class="mt-6 text-xs text-gray-500">&copy; {{ date('Y') }} AvtoBlog. Все права защищены.</p>
+                    <p class="mt-6 text-xs text-[#FBF7F0]/30">&copy; {{ date('Y') }} AvtoBlog.</p>
                 </div>
                 <div>
-                    <h3 class="text-white font-semibold mb-4">Навигация</h3>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="/sell" class="hover:text-[#C79A2C] transition-colors">Продать быстро</a></li>
-                        <li><a href="/trade-in" class="hover:text-[#C79A2C] transition-colors">Trade‑In</a></li>
-                        <li><a href="/credit" class="hover:text-[#C79A2C] transition-colors">Автокредитование</a></li>
-                        <li><a href="/blog" class="hover:text-[#C79A2C] transition-colors">Блог</a></li>
-                        <li><a href="/reviews" class="hover:text-[#C79A2C] transition-colors">Отзывы</a></li>
+                    <h3 class="text-[#FBF7F0] font-bold mb-4">Навигация</h3>
+                    <ul class="space-y-2.5 text-sm text-[#FBF7F0]/50">
+                        <li><a href="#" class="hover:text-[#C8963E] transition-colors">Продать быстро</a></li>
+                        <li><a href="#" class="hover:text-[#C8963E] transition-colors">Trade‑In</a></li>
+                        <li><a href="#" class="hover:text-[#C8963E] transition-colors">Автокредитование</a></li>
+                        <li><a href="#" class="hover:text-[#C8963E] transition-colors">Блог</a></li>
+                        <li><a href="#" class="hover:text-[#C8963E] transition-colors">Отзывы</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-white font-semibold mb-4">Контакты и соцсети</h3>
-                    <p class="text-[#C79A2C] text-lg font-semibold mb-3">8-800-123-45-67</p>
+                    <h3 class="text-[#FBF7F0] font-bold mb-4">Контакты</h3>
+                    <p class="text-[#C8963E] text-xl font-extrabold mb-4">8-800-123-45-67</p>
                     <div class="flex items-center space-x-3 mb-4">
-                        <a href="https://t.me/avtoblog" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-[#1E90FF] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.305.332-.605.332l.213-3.045 5.56-5.023c.242-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.643-.203-.658-.643.136-.953l11.566-4.458c.538-.196 1.006.128.832.894z"/></svg>
+                        <a href="https://t.me/avtoblog" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#0D7377] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-white text-sm font-bold">TG</span>
                         </a>
-                        <a href="https://youtube.com/@avtoblog" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-[#1E90FF] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <a href="https://youtube.com/@avtoblog" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#0D7377] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-white text-sm font-bold">YT</span>
                         </a>
-                        <a href="https://vk.com/avtoblog" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-[#1E90FF] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M15.684 0H8.316C3.724 0 0 3.724 0 8.316v7.368C0 20.276 3.724 24 8.316 24h7.368C20.276 24 24 20.276 24 15.684V8.316C24 3.724 20.276 0 15.684 0zm3.692 15.684h-1.988c-.66 0-.864-.524-2.052-1.706-1.034-1.006-1.494-1.136-1.748-1.136-.356 0-.456.102-.456.596v1.544c0 .428-.136.68-1.256.68-1.852 0-3.9-1.126-5.344-3.22-1.444-2.094-1.808-4.834-1.808-5.038 0-.256.102-.596.596-.596h1.988c.44 0 .61.204.78.68.864 2.48 2.32 4.64 2.916 4.64.22 0 .322-.102.322-.68V9.16c-.068-1.156-.648-1.254-.648-1.666 0-.204.17-.374.44-.374h3.128c.374 0 .51.204.51.646v3.484c0 .374.17.51.272.51.22 0 .408-.136.816-.578 1.258-1.412 2.154-3.586 2.154-3.586.118-.272.34-.68.782-.68h1.988c.374 0 .476.204.374.646-.154.714-3.246 5.556-3.246 5.556-.272.442-.374.646 0 1.156.272.444 1.156 1.138 1.734 1.836.578.68.714 1.02.612 1.36-.102.306-.476.34-.884.34z"/></svg>
+                        <a href="https://vk.com/avtoblog" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#0D7377] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-white text-sm font-bold">VK</span>
                         </a>
                     </div>
-                    <p class="text-sm text-gray-500">offer@avtoblog.ru</p>
+                    <p class="text-sm text-[#FBF7F0]/50">offer@avtoblog.ru</p>
                 </div>
             </div>
         </div>
