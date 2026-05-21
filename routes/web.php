@@ -13,3 +13,4 @@ Route::get('/', function () {
         'reviews' => Review::latest()->take(3)->get(), // Берем 3 последних отзыва
     ]);
 });
+Route::view('/trade-in', 'trade-in');

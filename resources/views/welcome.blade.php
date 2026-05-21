@@ -22,7 +22,7 @@
                 </a>
                 <nav class="hidden lg:flex items-center space-x-8">
                     <a href="#" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Продать быстро</a>
-                    <a href="#" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Trade‑In</a>
+                    <a href="/trade-in" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Trade‑In</a>
                     <a href="#" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Кредит</a>
                     <a href="#" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Блог</a>
                     <a href="#" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Отзывы</a>
@@ -34,7 +34,72 @@
         </div>
     </header>
 
-    <h1 class="text-3xl font-extrabold text-[#2C1810] mb-8 mt-10 px-8">Наши автомобили</h1>
+   
+    <!-- Hero: Оценка авто -->
+<section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-[#0D7377]/10 text-[#0D7377] text-xs font-bold uppercase tracking-widest mb-6">
+            Онлайн-аукцион для продажи авто
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-[#2C1810] leading-none mb-4">
+            Продайте авто<br>
+            <span class="text-[#C8963E]">за 2 часа</span> без перекупов
+        </h1>
+        <p class="text-lg text-[#2C1810]/60 mb-10 max-w-xl mx-auto leading-relaxed">
+            Тысячи дилеров торгуются за вашу машину онлайн. Вы просто смотрите и выбираете лучшую цену.
+        </p>
+
+        <!-- Форма оценки -->
+        <div class="bg-white rounded-3xl shadow-xl border border-[#C8963E]/10 p-6 max-w-lg mx-auto">
+            <p class="text-sm text-[#2C1810]/50 mb-4 text-left">
+                Введите госномер — данные заполнятся автоматически
+            </p>
+            
+            <div class="space-y-4">
+                <!-- Госномер -->
+                <input
+                    type="text"
+                    placeholder="Госномер, например А123БВ177"
+                    class="w-full bg-[#FBF7F0] border border-[#C8963E]/20 rounded-xl px-5 py-4 text-[#2C1810] placeholder-[#2C1810]/40 focus:outline-none focus:border-[#C8963E] focus:ring-4 focus:ring-[#C8963E]/10 transition-all text-lg font-medium"
+                >
+                
+                <!-- Email -->
+                <input
+                    type="email"
+                    placeholder="Электронная почта для оценки"
+                    class="w-full bg-[#FBF7F0] border border-[#C8963E]/20 rounded-xl px-5 py-4 text-[#2C1810] placeholder-[#2C1810]/40 focus:outline-none focus:border-[#C8963E] focus:ring-4 focus:ring-[#C8963E]/10 transition-all text-lg font-medium"
+                >
+            </div>
+
+            <p class="text-xs text-[#2C1810]/40 mt-4 text-left">
+                Предварительная стоимость будет отправлена на вашу электронную почту
+            </p>
+
+            <!-- Чекбокс -->
+            <label class="flex items-start gap-3 mt-4 text-left cursor-pointer group">
+                <input type="checkbox" class="mt-0.5 w-5 h-5 rounded border-[#C8963E]/30 text-[#C8963E] focus:ring-[#C8963E] cursor-pointer">
+                <span class="text-xs text-[#2C1810]/50 group-hover:text-[#2C1810]/70 transition-colors leading-relaxed">
+                    Я согласен с <a href="#" class="text-[#0D7377] underline hover:text-[#C8963E]">правилами обработки данных</a> и <a href="#" class="text-[#0D7377] underline hover:text-[#C8963E]">условиями сервиса</a>
+                </span>
+            </label>
+
+            <!-- Кнопка -->
+            <button class="w-full bg-[#C8963E] hover:bg-[#B8860B] text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-[#C8963E]/25 hover:shadow-xl mt-5 text-lg">
+                Узнать стоимость
+            </button>
+
+            <!-- Партнёры -->
+            <div class="flex items-center justify-center mt-5 space-x-4 text-xs text-[#2C1810]/30">
+                <span>Яндекс</span>
+                <span>Сбер</span>
+                <span>Альфа</span>
+                <span>Т-Банк</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <h2 class="text-3xl font-extrabold text-[#2C1810] mb-8 px-8">Наши автомобили</h2>
 
     <!-- Карточки автомобилей -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pb-12">
@@ -56,9 +121,9 @@
 
                 <div class="p-6 flex flex-col flex-grow">
                     <div class="mb-4">
-                        <h2 class="text-xl font-bold text-[#2C1810] leading-tight">
+                        <h3 class="text-xl font-bold text-[#2C1810] leading-tight">
                             {{ $car->brand }} {{ $car->model }}
-                        </h2>
+                        </h3>
                         <p class="text-[#2C1810]/50 text-sm font-medium">{{ $car->year }} года выпуска</p>
                     </div>
 
