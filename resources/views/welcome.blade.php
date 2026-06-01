@@ -65,14 +65,14 @@
                 
                 <!-- Email -->
                 <input
-                    type="email"
-                    placeholder="Электронная почта для оценки"
+                    type="tell"
+                    placeholder="+7 (___) ___-__-__"
                     class="w-full bg-[#FBF7F0] border border-[#C8963E]/20 rounded-xl px-5 py-4 text-[#2C1810] placeholder-[#2C1810]/40 focus:outline-none focus:border-[#C8963E] focus:ring-4 focus:ring-[#C8963E]/10 transition-all text-lg font-medium"
                 >
             </div>
 
             <p class="text-xs text-[#2C1810]/40 mt-4 text-left">
-                Предварительная стоимость будет отправлена на вашу электронную почту
+                Введите свой номер телефона, чтобы с вами связался наш менеджер
             </p>
 
             <!-- Чекбокс -->
