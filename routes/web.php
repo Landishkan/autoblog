@@ -16,3 +16,4 @@ Route::get('/', function () {
 Route::view('/trade-in', 'trade-in');
 Route::view('/credit', 'credit');
 Route::view('/blog', 'blog');
+Route::view('/reviews', 'reviews');
