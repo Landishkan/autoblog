@@ -26,8 +26,8 @@
                     <a href="/" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Главная</a>
                     <a href="/trade-in" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Trade‑In</a>
                     <a href="/credit" class="text-[#C8963E] text-sm font-bold">Кредит</a>
-                    <a href="#" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Блог</a>
-                    <a href="#" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Отзывы</a>
+                    <a href="/blog" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Блог</a>
+                    <a href="/reviews" class="text-white/70 hover:text-[#C8963E] transition-colors text-sm font-medium">Отзывы</a>
                 </nav>
                 <a href="#" class="hidden lg:inline-flex bg-[#C8963E] hover:bg-[#B8860B] text-white font-bold px-5 py-2 rounded-lg text-sm transition-all">
                     Оценить авто
