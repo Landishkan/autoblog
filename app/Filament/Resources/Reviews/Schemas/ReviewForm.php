@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Reviews\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class ReviewForm
@@ -13,20 +14,23 @@ class ReviewForm
         return $schema
             ->components([
                 TextInput::make('client_name')
-                    ->label('Имя клиента')
                     ->required(),
                 TextInput::make('car_model')
-                    ->label('Проданный автомобиль'),
-                TextInput::make('profit_amount')
-                    ->numeric()
-                    ->label('Выгода клиента (₽)')
-                    ->prefix('+'),
+                    ->required(),
                 Textarea::make('text')
-                    ->label('Текст отзыва')
+                    ->required()
                     ->columnSpanFull(),
+                TextInput::make('profit_amount')
+                    ->numeric(),
                 TextInput::make('video_url')
-                    ->label('Ссылка на видео (YouTube)')
                     ->url(),
+                TextInput::make('client_photo'),
+                TextInput::make('rating')
+                    ->required()
+                    ->numeric()
+                    ->default(5),
+                Toggle::make('is_published')
+                    ->required(),
             ]);
     }
 }

@@ -7,10 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     protected $fillable = [
-    'client_name', 
-    'car_model', 
-    'text', 
-    'profit_amount', 
-    'video_url'
+    'client_name',
+    'client_photo',
+    'car_model',
+    'text',
+    'rating',
+    'is_published',
+    'profit_amount'
+];
+
+protected $casts = [
+    'is_published' => 'boolean',
+    'rating' => 'integer'
 ];
 }

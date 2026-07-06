@@ -29,4 +29,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'role'
+];
+
+// Добавь методы для проверки роли
+public function isAdmin()
+{
+    return $this->role === 'admin';
+}
+
+public function isManager()
+{
+    return $this->role === 'manager';
+}
 }

@@ -2,7 +2,7 @@
 
 use App\Models\Car;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 use App\Models\Post;
 use App\Models\Review;
 
@@ -13,6 +13,7 @@ Route::get('/', function () {
         'reviews' => Review::latest()->take(3)->get(), // Берем 3 последних отзыва
     ]);
 });
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/trade-in', 'trade-in');
 Route::view('/credit', 'credit');
 Route::view('/blog', 'blog');

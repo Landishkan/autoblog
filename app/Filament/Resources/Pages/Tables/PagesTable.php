@@ -1,28 +1,22 @@
 <?php
 
-namespace App\Filament\Resources\Reviews\Tables;
+namespace App\Filament\Resources\Pages\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class ReviewsTable
+class PagesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('client_name')
+                TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('car_model')
-                    ->searchable(),
-                TextColumn::make('profit_amount')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('video_url')
+                TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -32,13 +26,6 @@ class ReviewsTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('client_photo')
-                    ->searchable(),
-                TextColumn::make('rating')
-                    ->numeric()
-                    ->sortable(),
-                IconColumn::make('is_published')
-                    ->boolean(),
             ])
             ->filters([
                 //
