@@ -75,38 +75,38 @@
             <div class="relative">
                 <div class="swiper reviewsSwiper">
                     <div class="swiper-wrapper">
-                        @foreach($reviews as $review)
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                         <div class="swiper-slide">
                             <div class="bg-white rounded-3xl p-8 shadow-lg border border-[#C8963E]/10 h-full flex flex-col">
                                 <!-- Рейтинг -->
                                 <div class="flex items-center mb-4">
-                                    @for($i = 1; $i <= 5; $i++)
-                                        <svg class="w-5 h-5 {{ $i <= $review->rating ? 'text-[#C8963E]' : 'text-gray-300' }}" fill="currentColor" viewBox="0 0 20 20">
+                                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                                        <svg class="w-5 h-5 <?php echo e($i <= $review->rating ? 'text-[#C8963E]' : 'text-gray-300'); ?>" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                         </svg>
-                                    @endfor
+                                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                                 </div>
                                 
                                 <!-- Текст отзыва -->
                                 <p class="text-[#2C1810]/70 italic leading-relaxed mb-6 flex-grow">
-                                    "{{ $review->text }}"
+                                    "<?php echo e($review->text); ?>"
                                 </p>
                                 
                                 <!-- Автор -->
                                 <div class="border-t border-[#C8963E]/10 pt-4">
                                     <div class="flex items-center">
                                         <div class="w-12 h-12 bg-[#C8963E]/20 rounded-full flex items-center justify-center mr-4">
-                                            <span class="text-[#C8963E] font-bold text-lg">{{ substr($review->client_name, 0, 1) }}</span>
+                                            <span class="text-[#C8963E] font-bold text-lg"><?php echo e(substr($review->client_name, 0, 1)); ?></span>
                                         </div>
                                         <div>
-                                            <div class="font-bold text-[#2C1810]">{{ $review->client_name }}</div>
-                                            <div class="text-sm text-[#2C1810]/50">{{ $review->car_model }}</div>
+                                            <div class="font-bold text-[#2C1810]"><?php echo e($review->client_name); ?></div>
+                                            <div class="text-sm text-[#2C1810]/50"><?php echo e($review->car_model); ?></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                     </div>
                 </div>
                 
@@ -123,30 +123,31 @@
             <h2 class="text-4xl font-extrabold text-[#2C1810] mb-12 text-center">Все отзывы</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($reviews as $review)
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                 <div class="bg-white rounded-2xl p-6 shadow-lg border border-[#C8963E]/10">
                     <div class="flex items-center mb-3">
-                        @for($i = 1; $i <= 5; $i++)
-                            <svg class="w-4 h-4 {{ $i <= $review->rating ? 'text-[#C8963E]' : 'text-gray-300' }}" fill="currentColor" viewBox="0 0 20 20">
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                            <svg class="w-4 h-4 <?php echo e($i <= $review->rating ? 'text-[#C8963E]' : 'text-gray-300'); ?>" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                             </svg>
-                        @endfor
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                     </div>
-                    <p class="text-[#2C1810]/70 text-sm mb-4">"{{ $review->text }}"</p>
+                    <p class="text-[#2C1810]/70 text-sm mb-4">"<?php echo e($review->text); ?>"</p>
                     <div class="border-t border-[#C8963E]/10 pt-3">
-                        <div class="font-bold text-[#2C1810] text-sm">{{ $review->client_name }}</div>
-                        <div class="text-xs text-[#2C1810]/50">{{ $review->car_model }}</div>
+                        <div class="font-bold text-[#2C1810] text-sm"><?php echo e($review->client_name); ?></div>
+                        <div class="text-xs text-[#2C1810]/50"><?php echo e($review->car_model); ?></div>
                     </div>
                 </div>
-                @endforeach
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
             </div>
             
             <!-- Пагинация -->
-            @if($reviews->hasPages())
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($reviews->hasPages()): ?>
             <div class="mt-12">
-                {{ $reviews->links() }}
+                <?php echo e($reviews->links()); ?>
+
             </div>
-            @endif
+            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         </div>
     </section>
 
@@ -156,24 +157,25 @@
             <div class="bg-white rounded-3xl shadow-xl p-8 border border-[#C8963E]/10">
                 <h2 class="text-3xl font-extrabold text-[#2C1810] mb-6 text-center">Оставьте свой отзыв</h2>
                 
-             @if(session('success'))
+             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('success')): ?>
     <div class="bg-[#0D7377]/10 border border-[#0D7377] text-[#0D7377] px-4 py-3 rounded-xl mb-6">
-        {{ session('success') }}
-    </div>
-@endif
+        <?php echo e(session('success')); ?>
 
-@if($errors->any())
+    </div>
+<?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($errors->any()): ?>
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-6">
         <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                <li><?php echo e($error); ?></li>
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
         </ul>
     </div>
-@endif
+<?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
-<form action="{{ route('reviews.store') }}" method="POST" class="space-y-4">
-    @csrf
+<form action="<?php echo e(route('reviews.store')); ?>" method="POST" class="space-y-4">
+    <?php echo csrf_field(); ?>
                     
                     <div>
                         <label class="block text-sm font-medium text-[#2C1810]/70 mb-2">Ваше имя</label>
@@ -190,9 +192,9 @@
                     <div>
                         <label class="block text-sm font-medium text-[#2C1810]/70 mb-2">Оценка</label>
                         <div class="flex space-x-2" id="ratingStars">
-                            @for($i = 1; $i <= 5; $i++)
-                                <button type="button" data-rating="{{ $i }}" class="rating-star text-3xl text-gray-300 hover:text-[#C8963E] transition-colors">★</button>
-                            @endfor
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                                <button type="button" data-rating="<?php echo e($i); ?>" class="rating-star text-3xl text-gray-300 hover:text-[#C8963E] transition-colors">★</button>
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                             <input type="hidden" name="rating" id="ratingInput" value="5" required>
                         </div>
                     </div>
@@ -292,4 +294,4 @@
         });
     </script>
 </body>
-</html>
+</html><?php /**PATH D:\laragon\www\avtoblog\resources\views/reviews.blade.php ENDPATH**/ ?>

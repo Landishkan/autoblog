@@ -3,18 +3,26 @@
 use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Models\Post;
-use App\Models\Review;
+use App\Http\Controllers\LeadController;
+use App\Http\Controllers\CreditTradeInController;
+use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\ChatbotController;
 
-Route::get('/', function () {
-    return view('welcome', [
-        'cars' => Car::where('is_published', true)->take(6)->get(),
-        'posts' => Post::latest()->take(3)->get(), // Берем 3 последние статьи
-        'reviews' => Review::latest()->take(3)->get(), // Берем 3 последних отзыва
-    ]);
-});
+Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
+// Главная страница
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Кредит / Trade-In
+Route::get('/credit-trade-in', [CreditTradeInController::class, 'index'])->name('credit-trade-in');
+
+// Отзывы
+Route::get('/reviews', [ReviewsController::class, 'index'])->name('reviews.index');
+Route::post('/reviews', [ReviewsController::class, 'store'])->name('reviews.store');
+
+// Заявки
+Route::post('/leads', [LeadController::class, 'store'])->name('leads.store');
+
+// Заглушки для старых страниц (можно удалить если не нужны)
 Route::view('/trade-in', 'trade-in');
 Route::view('/credit', 'credit');
 Route::view('/blog', 'blog');
-Route::view('/reviews', 'reviews');
