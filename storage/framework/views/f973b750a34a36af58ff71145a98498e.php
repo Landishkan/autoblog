@@ -166,8 +166,8 @@
                 <div id="lead-form" class="bg-white rounded-3xl shadow-xl p-8 border border-[#C4907C]/10">
                     <h2 class="text-3xl font-extrabold text-[#3D4047] mb-6">Оцените ваше авто</h2>
                     
-                    <form action="{{ route('leads.store') }}" method="POST" class="space-y-4">
-                        @csrf
+                    <form action="<?php echo e(route('leads.store')); ?>" method="POST" class="space-y-4">
+                        <?php echo csrf_field(); ?>
                         <input type="hidden" name="service_type" value="general">
                         
                         <div>
@@ -203,15 +203,15 @@
             <h2 class="text-4xl font-extrabold text-[#3D4047] mb-12 text-center">Как это работает</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                @foreach($steps as $step)
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $steps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $step): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                 <div class="bg-white rounded-2xl p-8 shadow-lg border border-[#C4907C]/10 text-center">
                     <div class="w-16 h-16 bg-[#8BA89A] rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-white text-2xl font-bold">{{ $step->order }}</span>
+                        <span class="text-white text-2xl font-bold"><?php echo e($step->order); ?></span>
                     </div>
-                    <h3 class="text-xl font-bold text-[#3D4047] mb-3">{{ $step->title }}</h3>
-                    <p class="text-[#7A7D82]">{{ $step->description }}</p>
+                    <h3 class="text-xl font-bold text-[#3D4047] mb-3"><?php echo e($step->title); ?></h3>
+                    <p class="text-[#7A7D82]"><?php echo e($step->description); ?></p>
                 </div>
-                @endforeach
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
             </div>
         </div>
     </section>
@@ -224,22 +224,22 @@
             <div class="relative">
                 <div class="swiper reviewsSwiper">
                     <div class="swiper-wrapper">
-                        @foreach($reviews as $review)
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                         <div class="swiper-slide">
                             <div class="bg-white rounded-2xl p-8 shadow-lg border border-[#C4907C]/10">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-[#C4907C]/20 rounded-full flex items-center justify-center mr-4">
-                                        <span class="text-[#C4907C] font-bold">{{ substr($review->client_name, 0, 1) }}</span>
+                                        <span class="text-[#C4907C] font-bold"><?php echo e(substr($review->client_name, 0, 1)); ?></span>
                                     </div>
                                     <div>
-                                        <div class="font-bold text-[#3D4047]">{{ $review->client_name }}</div>
-                                        <div class="text-sm text-[#7A7D82]">{{ $review->car_model }}</div>
+                                        <div class="font-bold text-[#3D4047]"><?php echo e($review->client_name); ?></div>
+                                        <div class="text-sm text-[#7A7D82]"><?php echo e($review->car_model); ?></div>
                                     </div>
                                 </div>
-                                <p class="text-[#3D4047]/70 italic">"{{ $review->text }}"</p>
+                                <p class="text-[#3D4047]/70 italic">"<?php echo e($review->text); ?>"</p>
                             </div>
                         </div>
-                        @endforeach
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                     </div>
                 </div>
                 
@@ -295,4 +295,4 @@
         });
     </script>
 </body>
-</html>
+</html><?php /**PATH /Users/lianavaleeva/Herd/autoblog/resources/views/home.blade.php ENDPATH**/ ?>
