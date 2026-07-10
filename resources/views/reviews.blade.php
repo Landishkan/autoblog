@@ -150,7 +150,7 @@
         </div>
     </section>
 
-    <!-- Форма отзыва -->
+    <!-- Форма отзыва 
     <section class="py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto">
             <div class="bg-white rounded-3xl shadow-xl p-8 border border-[#C8963E]/10">
@@ -209,7 +209,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer class="bg-[#2C1810] py-12 px-4 sm:px-6 lg:px-8">

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кредит / Trade-In - AvtoBlog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#FAF7F2]">
+
+    <!-- Header -->
+    <header class="bg-[#4A5D6B] shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="text-2xl font-extrabold text-white">
+                    Avto<span class="text-[#C4907C]">Blog</span>
+                </a>
+                
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="/" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Главная</a>
+                    <a href="/credit-trade-in" class="text-[#C4907C] font-bold text-sm">Кредит / Trade-In</a>
+                    <a href="/chatbot" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Чат-бот</a>
+                    <a href="/reviews" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Отзывы</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="tel:88001234567" class="hidden md:block text-white font-bold text-lg">8-800-123-45-67</a>
+                    <a href="#lead-form" class="hidden lg:inline-flex bg-[#C4907C] hover:bg-[#B07D6A] text-white font-bold px-5 py-2 rounded-lg text-sm transition-all">Оставить заявку</a>
+                    <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-[#3D4F5C]">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="hidden lg:hidden bg-[#4A5D6B] border-t border-[#3D4F5C]">
+            <div class="px-4 py-4 space-y-3">
+                <a href="/" class="block text-white/70 hover:text-[#C4907C] font-medium">Главная</a>
+                <a href="/credit-trade-in" class="block text-[#C4907C] font-bold">Кредит / Trade-In</a>
+                <a href="/chatbot" class="block text-white/70 hover:text-[#C4907C] font-medium">Чат-бот</a>
+                <a href="/reviews" class="block text-white/70 hover:text-[#C4907C] font-medium">Отзывы</a>
+                <a href="#lead-form" class="block bg-[#C4907C] text-white text-center py-3 rounded-xl font-bold">Оставить заявку</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Переключатель Кредит / Trade-In -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-lg p-2 inline-flex w-full mb-8">
+                <button id="creditTab" class="flex-1 py-3 px-6 rounded-xl font-bold text-sm transition-all bg-[#C4907C] text-white">
+                    Кредит
+                </button>
+                <button id="tradeInTab" class="flex-1 py-3 px-6 rounded-xl font-bold text-sm transition-all text-[#3D4047] hover:bg-[#FAF7F2]">
+                    Trade-In
+                </button>
+            </div>
+
+            <!-- Форма заявки -->
+            <div id="lead-form" class="bg-white rounded-3xl shadow-xl p-8 border border-[#C4907C]/10 mb-12">
+                <h2 class="text-3xl font-extrabold text-[#3D4047] mb-6">Оставьте заявку</h2>
+                
+                <form action="<?php echo e(route('leads.store')); ?>" method="POST" class="space-y-4">
+                    <?php echo csrf_field(); ?>
+                    <input type="hidden" name="service_type" id="serviceTypeInput" value="credit">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-[#7A7D82] mb-2">Имя</label>
+                            <input type="text" name="name" placeholder="Ваше имя" 
+                                class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] placeholder-[#7A7D82] focus:outline-none focus:border-[#C4907C] focus:ring-4 focus:ring-[#C4907C]/10">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#7A7D82] mb-2">Телефон</label>
+                            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required
+                                class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] placeholder-[#7A7D82] focus:outline-none focus:border-[#C4907C] focus:ring-4 focus:ring-[#C4907C]/10">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-[#C4907C] hover:bg-[#B07D6A] text-white font-bold py-4 rounded-xl transition-all shadow-lg">
+                        Отправить заявку
+                    </button>
+                </form>
+            </div>
+
+            <!-- Калькулятор -->
+            <div id="calculatorSection" class="bg-white rounded-3xl shadow-xl p-8 border border-[#C4907C]/10 mb-12">
+                <h2 class="text-3xl font-extrabold text-[#3D4047] mb-6">Рассчитайте сумму</h2>
+                
+                <div id="creditCalculator">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-[#7A7D82] mb-2">Стоимость авто</label>
+                            <input type="range" id="creditAmount" min="500000" max="10000000" step="100000" value="2000000" 
+                                class="w-full h-2 bg-[#FAF7F2] rounded-lg appearance-none cursor-pointer accent-[#C4907C]">
+                            <div class="flex justify-between text-sm text-[#7A7D82] mt-2">
+                                <span>500 000 ₽</span>
+                                <span id="creditAmountValue" class="font-bold text-[#C4907C]">2 000 000 ₽</span>
+                                <span>10 000 000 ₽</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#7A7D82] mb-2">Срок кредита</label>
+                            <input type="range" id="creditTerm" min="12" max="84" step="12" value="36" 
+                                class="w-full h-2 bg-[#FAF7F2] rounded-lg appearance-none cursor-pointer accent-[#C4907C]">
+                            <div class="flex justify-between text-sm text-[#7A7D82] mt-2">
+                                <span>12 мес</span>
+                                <span id="creditTermValue" class="font-bold text-[#C4907C]">36 мес</span>
+                                <span>84 мес</span>
+                            </div>
+                        </div>
+                        <div class="bg-[#FAF7F2] rounded-xl p-6 mt-6">
+                            <div class="text-sm text-[#7A7D82] mb-2">Ежемесячный платеж</div>
+                            <div id="creditMonthly" class="text-3xl font-extrabold text-[#C4907C]">45 000 ₽</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tradeInCalculator" class="hidden">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-[#7A7D82] mb-2">Стоимость вашего авто</label>
+                            <input type="range" id="tradeInCarPrice" min="100000" max="5000000" step="50000" value="1000000" 
+                                class="w-full h-2 bg-[#FAF7F2] rounded-lg appearance-none cursor-pointer accent-[#C4907C]">
+                            <div class="flex justify-between text-sm text-[#7A7D82] mt-2">
+                                <span>100 000 ₽</span>
+                                <span id="tradeInCarPriceValue" class="font-bold text-[#C4907C]">1 000 000 ₽</span>
+                                <span>5 000 000 ₽</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#7A7D82] mb-2">Стоимость нового авто</label>
+                            <input type="range" id="tradeInNewPrice" min="500000" max="10000000" step="100000" value="3000000" 
+                                class="w-full h-2 bg-[#FAF7F2] rounded-lg appearance-none cursor-pointer accent-[#C4907C]">
+                            <div class="flex justify-between text-sm text-[#7A7D82] mt-2">
+                                <span>500 000 ₽</span>
+                                <span id="tradeInNewPriceValue" class="font-bold text-[#C4907C]">3 000 000 ₽</span>
+                                <span>10 000 000 ₽</span>
+                            </div>
+                        </div>
+                        <div class="bg-[#FAF7F2] rounded-xl p-6 mt-6">
+                            <div class="text-sm text-[#7A7D82] mb-2">Ваша выгода</div>
+                            <div id="tradeInBenefit" class="text-3xl font-extrabold text-[#8BA89A]">+2 100 000 ₽</div>
+                            <div class="text-xs text-[#7A7D82] mt-2">Разница с учетом оценки вашего авто</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Преимущества -->
+            <div class="bg-white rounded-3xl shadow-xl p-8 border border-[#C4907C]/10 mb-12">
+                <h2 class="text-3xl font-extrabold text-[#3D4047] mb-8 text-center">Почему это вам подойдет</h2>
+                
+                <div id="creditBenefits" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Низкая ставка</h3><p class="text-sm text-[#7A7D82]">От 4.9% годовых для зарплатных клиентов</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Без первоначального взноса</h3><p class="text-sm text-[#7A7D82]">Финансирование до 100% стоимости авто</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Решение за 15 минут</h3><p class="text-sm text-[#7A7D82]">Онлайн-одобрение без визита в банк</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Срок до 7 лет</h3><p class="text-sm text-[#7A7D82]">Гибкие условия погашения</p></div>
+                    </div>
+                </div>
+                
+                <div id="tradeInBenefits" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Быстрая оценка</h3><p class="text-sm text-[#7A7D82]">Узнайте стоимость вашего авто за 5 минут</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Выгода до 15%</h3><p class="text-sm text-[#7A7D82]">По сравнению с обычной продажей</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Безопасная сделка</h3><p class="text-sm text-[#7A7D82]">Все документы оформляем мы</p></div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div><h3 class="font-bold text-[#3D4047] mb-2">Обмен на любое авто</h3><p class="text-sm text-[#7A7D82]">Выбирайте из нашего каталога</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Примеры -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-extrabold text-[#3D4047] mb-8 text-center">Примеры сделок</h2>
+                
+                <div id="creditExamples" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $creditExamples; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $example): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#C4907C]/10">
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($example->image): ?>
+                            <img src="<?php echo e(Storage::url($example->image)); ?>" class="w-full h-48 object-cover" alt="<?php echo e($example->title); ?>">
+                        <?php else: ?>
+                            <div class="w-full h-48 bg-[#EEF1EB] flex items-center justify-center text-[#C4907C]/30">Нет фото</div>
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                        <div class="p-6">
+                            <h3 class="font-bold text-[#3D4047] mb-2"><?php echo e($example->title); ?></h3>
+                            <p class="text-sm text-[#7A7D82]"><?php echo e($example->description); ?></p>
+                        </div>
+                    </div>
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+                </div>
+                
+                <div id="tradeInExamples" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $tradeInExamples; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $example): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#C4907C]/10">
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($example->image): ?>
+                            <img src="<?php echo e(Storage::url($example->image)); ?>" class="w-full h-48 object-cover" alt="<?php echo e($example->title); ?>">
+                        <?php else: ?>
+                            <div class="w-full h-48 bg-[#EEF1EB] flex items-center justify-center text-[#C4907C]/30">Нет фото</div>
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                        <div class="p-6">
+                            <h3 class="font-bold text-[#3D4047] mb-2"><?php echo e($example->title); ?></h3>
+                            <p class="text-sm text-[#7A7D82]"><?php echo e($example->description); ?></p>
+                        </div>
+                    </div>
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+                </div>
+            </div>
+
+            <!-- Отзывы -->
+            <div class="bg-[#EEF1EB] rounded-3xl p-8">
+                <h2 class="text-3xl font-extrabold text-[#3D4047] mb-8 text-center">Отзывы клиентов</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-[#C4907C]/20 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-[#C4907C] font-bold"><?php echo e(substr($review->client_name, 0, 1)); ?></span>
+                            </div>
+                            <div>
+                                <div class="font-bold text-[#3D4047]"><?php echo e($review->client_name); ?></div>
+                                <div class="text-sm text-[#7A7D82]"><?php echo e($review->car_model); ?></div>
+                            </div>
+                        </div>
+                        <p class="text-[#3D4047]/70 italic">"<?php echo e($review->text); ?>"</p>
+                    </div>
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#4A5D6B] py-12 px-4 sm:px-6 lg:px-8 mt-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+                <div>
+                    <span class="text-xl font-extrabold">Avto<span class="text-[#C4907C]">Blog</span></span>
+                    <p class="text-white/50 text-sm mt-2">Сервис продажи и обмена авто</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-3">Контакты</h3>
+                    <p class="text-[#C4907C] text-xl font-extrabold">8-800-123-45-67</p>
+                    <p class="text-white/50 text-sm mt-2">offer@avtoblog.ru</p>
+                    <p class="text-white/50 text-sm mt-1">г. Москва, ул. Примерная, 123</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-3">Навигация</h3>
+                    <ul class="space-y-2 text-sm text-white/50">
+                        <li><a href="/" class="hover:text-[#C4907C]">Главная</a></li>
+                        <li><a href="/credit-trade-in" class="hover:text-[#C4907C]">Кредит / Trade-In</a></li>
+                        <li><a href="/reviews" class="hover:text-[#C4907C]">Отзывы</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        
+        const creditTab = document.getElementById('creditTab');
+        const tradeInTab = document.getElementById('tradeInTab');
+        const creditCalculator = document.getElementById('creditCalculator');
+        const tradeInCalculator = document.getElementById('tradeInCalculator');
+        const creditBenefits = document.getElementById('creditBenefits');
+        const tradeInBenefits = document.getElementById('tradeInBenefits');
+        const creditExamples = document.getElementById('creditExamples');
+        const tradeInExamples = document.getElementById('tradeInExamples');
+        const serviceTypeInput = document.getElementById('serviceTypeInput');
+        
+        creditTab.addEventListener('click', function() {
+            creditTab.classList.add('bg-[#C4907C]', 'text-white');
+            creditTab.classList.remove('text-[#3D4047]', 'hover:bg-[#FAF7F2]');
+            tradeInTab.classList.remove('bg-[#C4907C]', 'text-white');
+            tradeInTab.classList.add('text-[#3D4047]', 'hover:bg-[#FAF7F2]');
+            creditCalculator.classList.remove('hidden');
+            tradeInCalculator.classList.add('hidden');
+            creditBenefits.classList.remove('hidden');
+            tradeInBenefits.classList.add('hidden');
+            creditExamples.classList.remove('hidden');
+            tradeInExamples.classList.add('hidden');
+            serviceTypeInput.value = 'credit';
+        });
+        
+        tradeInTab.addEventListener('click', function() {
+            tradeInTab.classList.add('bg-[#C4907C]', 'text-white');
+            tradeInTab.classList.remove('text-[#3D4047]', 'hover:bg-[#FAF7F2]');
+            creditTab.classList.remove('bg-[#C4907C]', 'text-white');
+            creditTab.classList.add('text-[#3D4047]', 'hover:bg-[#FAF7F2]');
+            tradeInCalculator.classList.remove('hidden');
+            creditCalculator.classList.add('hidden');
+            tradeInBenefits.classList.remove('hidden');
+            creditBenefits.classList.add('hidden');
+            tradeInExamples.classList.remove('hidden');
+            creditExamples.classList.add('hidden');
+            serviceTypeInput.value = 'trade-in';
+        });
+        
+        function formatNumber(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽'; }
+        
+        const creditAmount = document.getElementById('creditAmount');
+        const creditTerm = document.getElementById('creditTerm');
+        const creditAmountValue = document.getElementById('creditAmountValue');
+        const creditTermValue = document.getElementById('creditTermValue');
+        const creditMonthly = document.getElementById('creditMonthly');
+        
+        function calculateCredit() {
+            const amount = parseInt(creditAmount.value);
+            const term = parseInt(creditTerm.value);
+            const rate = 0.049 / 12;
+            const monthly = (amount * rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+            creditAmountValue.textContent = formatNumber(amount);
+            creditTermValue.textContent = term + ' мес';
+            creditMonthly.textContent = formatNumber(Math.round(monthly));
+        }
+        creditAmount.addEventListener('input', calculateCredit);
+        creditTerm.addEventListener('input', calculateCredit);
+        calculateCredit();
+        
+        const tradeInCarPrice = document.getElementById('tradeInCarPrice');
+        const tradeInNewPrice = document.getElementById('tradeInNewPrice');
+        const tradeInCarPriceValue = document.getElementById('tradeInCarPriceValue');
+        const tradeInNewPriceValue = document.getElementById('tradeInNewPriceValue');
+        const tradeInBenefit = document.getElementById('tradeInBenefit');
+        
+        function calculateTradeIn() {
+            const carPrice = parseInt(tradeInCarPrice.value);
+            const newPrice = parseInt(tradeInNewPrice.value);
+            const benefit = newPrice - (carPrice * 0.9);
+            tradeInCarPriceValue.textContent = formatNumber(carPrice);
+            tradeInNewPriceValue.textContent = formatNumber(newPrice);
+            tradeInBenefit.textContent = '+' + formatNumber(Math.round(benefit));
+        }
+        tradeInCarPrice.addEventListener('input', calculateTradeIn);
+        tradeInNewPrice.addEventListener('input', calculateTradeIn);
+        calculateTradeIn();
+    </script>
+</body>
+</html><?php /**PATH D:\laragon\www\avtoblog\resources\views/credit-trade-in.blade.php ENDPATH**/ ?>
