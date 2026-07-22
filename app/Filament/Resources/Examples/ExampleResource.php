@@ -17,7 +17,10 @@ use Filament\Tables\Table;
 class ExampleResource extends Resource
 {
     protected static ?string $model = Example::class;
-
+protected static ?string $modelLabel = 'Пример';
+protected static ?string $pluralModelLabel = 'Примеры сделок';
+public static function getNavigationLabel(): string { return 'Примеры сделок'; }
+public static function getNavigationIcon(): string { return 'heroicon-o-photo'; }
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'title';

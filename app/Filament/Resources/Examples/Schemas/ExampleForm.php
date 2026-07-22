@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\Examples\Schemas;
 
-use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
 
 class ExampleForm
@@ -13,15 +14,34 @@ class ExampleForm
     {
         return $schema
             ->components([
-                TextInput::make('service_type')
+                Select::make('service_type')
+                    ->label('Тип услуги')
+                    ->options([
+                        'credit' => 'Кредит',
+                        'trade-in' => 'Trade-In',
+                    ])
                     ->required(),
+
                 TextInput::make('title')
-                    ->required(),
-                Textarea::make('description')
+                    ->label('Заголовок')
                     ->required()
+                    ->maxLength(255),
+
+                Textarea::make('description')
+                    ->label('Описание')
+                    ->required()
+                    ->rows(3)
                     ->columnSpanFull(),
+
                 FileUpload::make('image')
-                    ->image(),
+    ->label('Картинка примера')
+    ->image()
+    ->directory('examples')
+    ->disk('public')
+    ->maxSize(2048)
+    ->imageResizeMode('cover')
+    ->imageResizeTargetWidth('1200')  // Целевая ширина
+    ->imageResizeTargetHeight('675'), // Целевая высота (примерно 16:9)
             ]);
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AvtoBlog - Продажа авто</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -165,11 +166,18 @@
                 
                 <div id="lead-form" class="bg-white rounded-3xl shadow-xl p-8 border border-[#C4907C]/10">
                     <h2 class="text-3xl font-extrabold text-[#3D4047] mb-6">Оцените ваше авто</h2>
-                    
-                    <form action="{{ route('leads.store') }}" method="POST" class="space-y-4">
-                        @csrf
-                        <input type="hidden" name="service_type" value="general">
-                        
+                     <form class="lead-form-ajax space-y-4" data-type="general">
+    @csrf
+    <input type="hidden" name="service_type" value="general">
+             <!-- Тип лица -->
+ <div>
+                    <label class="block text-sm font-medium text-[#7A7D82] mb-2">Тип лица</label>
+                    <select name="entity_type" class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] focus:outline-none focus:border-[#C4907C] focus:ring-4 focus:ring-[#C4907C]/10">
+                        <option value="physical">Физическое лицо</option>
+                        <option value="legal">Юридическое лицо</option>
+                    </select>
+                </div>
+    
                         <div>
                             <label class="block text-sm font-medium text-[#7A7D82] mb-2">Госномер</label>
                             <input type="text" name="car_number" placeholder="А123БВ177" 
@@ -217,38 +225,62 @@
     </section>
 
     <!-- Отзывы (карусель) -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#EEF1EB]">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-extrabold text-[#3D4047] mb-12 text-center">Отзывы клиентов</h2>
-            
-            <div class="relative">
-                <div class="swiper reviewsSwiper">
-                    <div class="swiper-wrapper">
-                        @foreach($reviews as $review)
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-2xl p-8 shadow-lg border border-[#C4907C]/10">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-[#C4907C]/20 rounded-full flex items-center justify-center mr-4">
-                                        <span class="text-[#C4907C] font-bold">{{ substr($review->client_name, 0, 1) }}</span>
-                                    </div>
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#EEF1EB]">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-extrabold text-[#3D4047] mb-12 text-center">Отзывы клиентов</h2>
+        
+        <div class="relative px-8 md:px-12">
+            <!-- Swiper -->
+            <div class="swiper reviewsSwiper">
+                <div class="swiper-wrapper">
+                    @foreach($reviews as $review)
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-[#C4907C]/10 h-full flex flex-col">
+                            <!-- Звёзды рейтинга -->
+                            <div class="flex items-center mb-4">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <svg class="w-5 h-5 {{ $i <= $review->rating ? 'text-[#C4907C]' : 'text-gray-300' }}" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                @endfor
+                            </div>
+
+                            <!-- Текст отзыва -->
+                            <p class="text-[#3D4047]/80 text-sm leading-relaxed mb-6 flex-grow">
+                                "{{ $review->text }}"
+                            </p>
+
+                            <!-- Разделитель -->
+                            <div class="border-t border-[#C4907C]/10 pt-4 mt-auto">
+                                <div class="flex items-center">
+                                    @if($review->client_photo)
+                                        <img src="{{ Storage::url($review->client_photo) }}" 
+                                             class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-[#C4907C]/20" 
+                                             alt="{{ $review->client_name }}">
+                                    @else
+                                        <div class="w-12 h-12 bg-[#C4907C]/20 rounded-full flex items-center justify-center mr-4">
+                                            <span class="text-[#C4907C] font-bold text-lg">{{ substr($review->client_name, 0, 1) }}</span>
+                                        </div>
+                                    @endif
+
                                     <div>
-                                        <div class="font-bold text-[#3D4047]">{{ $review->client_name }}</div>
-                                        <div class="text-sm text-[#7A7D82]">{{ $review->car_model }}</div>
+                                        <div class="font-bold text-[#3D4047] text-sm">{{ $review->client_name }}</div>
+                                        <div class="text-xs text-[#7A7D82]">{{ $review->car_model }}</div>
                                     </div>
                                 </div>
-                                <p class="text-[#3D4047]/70 italic">"{{ $review->text }}"</p>
                             </div>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
-                
-                <div class="swiper-button-prev hidden md:flex !text-[#C4907C]"></div>
-                <div class="swiper-button-next hidden md:flex !text-[#C4907C]"></div>
             </div>
+            
+            <!-- Кнопки навигации (стрелки) -->
+            <button class="swiper-button-prev !w-12 !h-12 !bg-white !rounded-full !shadow-lg !border !border-[#C4907C]/20 hover:!bg-[#C4907C] hover:!border-[#C4907C] transition-all"></button>
+            <button class="swiper-button-next !w-12 !h-12 !bg-white !rounded-full !shadow-lg !border !border-[#C4907C]/20 hover:!bg-[#C4907C] hover:!border-[#C4907C] transition-all"></button>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Footer -->
     <footer class="bg-[#4A5D6B] py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
@@ -274,8 +306,77 @@
             </div>
         </div>
     </footer>
+    <!-- ================= МОДАЛЬНЫЕ ОКНА ================= -->
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- 1. Модалка "Успешная отправка" -->
+    <div id="successModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-[#3D4047]/70 backdrop-filter backdrop-blur-sm"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md border border-[#8BA89A]/30 text-center">
+            <div class="w-16 h-16 bg-[#8BA89A] rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h2 class="text-2xl font-extrabold text-[#3D4047] mb-2">Заявка отправлена!</h2>
+            <p class="text-[#7A7D82] mb-6">Наш менеджер свяжется с вами в ближайшее время.</p>
+            <button onclick="closeSuccessModal()" class="w-full bg-[#4A5D6B] hover:bg-[#3D4F5C] text-white font-bold py-3 rounded-xl transition-all">
+                Отлично, спасибо!
+            </button>
+        </div>
+    </div>
+   <!-- Подключаем Swiper (если ещё не подключён) -->
+
+<!-- Swiper CSS и JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<style>
+    /* Кастомные стили для стрелок Swiper */
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 20px !important;
+        font-weight: bold !important;
+        color: #C4907C !important;
+    }
+    
+    .swiper-button-prev:hover::after,
+    .swiper-button-next:hover::after {
+        color: white !important;
+    }
+    
+    /* Отступы для стрелок на мобильных */
+    @media (max-width: 768px) {
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 36px !important;
+            height: 36px !important;
+        }
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            font-size: 16px !important;
+        }
+    }
+</style>
+
+<script>
+    // Инициализация карусели отзывов
+    new Swiper('.reviewsSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 24,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    });
+</script>
     <script>
         document.getElementById('menuBtn').addEventListener('click', function() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -293,6 +394,63 @@
                 1024: { slidesPerView: 3 }
             }
         });
+         function showSuccessModal() {
+        document.getElementById('successModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSuccessModal() {
+        document.getElementById('successModal').classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.lead-form-ajax').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+            
+            fetch('{{ route("leads.store") }}', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(async response => {
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    return response.json();
+                } else {
+                    const errorText = await response.text();
+                    console.error("Сервер вернул HTML:", errorText);
+                    throw new Error("Ошибка сервера");
+                }
+            })
+            .then(data => {
+                if (data.success) {
+                    form.reset();
+                    showSuccessModal();
+                } else {
+                    alert(data.message || "Проверьте правильность заполнения полей.");
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert("Произошла ошибка. Попробуйте позже.");
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
+        });
+    });
     </script>
 </body>
 </html>

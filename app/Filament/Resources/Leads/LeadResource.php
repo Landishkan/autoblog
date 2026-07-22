@@ -17,7 +17,21 @@ use Filament\Tables\Table;
 class LeadResource extends Resource
 {
     protected static ?string $model = Lead::class;
+ // Перевод названия модели (для заголовков страниц "Создать заявку", "Редактировать заявку")
+    protected static ?string $modelLabel = 'Заявка';
+    protected static ?string $pluralModelLabel = 'Заявки';
 
+    // Перевод названия вкладки в боковом меню
+    public static function getNavigationLabel(): string
+    {
+        return 'Заявки';
+    }
+
+    // (Бонус) Можно поменять иконку вкладки
+    public static function getNavigationIcon(): string
+    {
+        return 'heroicon-o-inbox-stack'; // Иконка входящих
+    }
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'name';

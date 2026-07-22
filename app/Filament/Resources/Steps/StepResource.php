@@ -17,6 +17,10 @@ use Filament\Tables\Table;
 class StepResource extends Resource
 {
     protected static ?string $model = Step::class;
+    protected static ?string $modelLabel = 'Шаг';
+protected static ?string $pluralModelLabel = 'Шаги';
+public static function getNavigationLabel(): string { return 'Шаги (Главная)'; }
+public static function getNavigationIcon(): string { return 'heroicon-o-numbered-list'; }
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
