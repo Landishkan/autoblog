@@ -33,7 +33,7 @@
         .typing-indicator span {
             width: 8px;
             height: 8px;
-            background: #C8963E;
+            background: #C4907C; /* Новый акцентный цвет */
             border-radius: 50%;
             animation: bounce 1.4s infinite ease-in-out;
         }
@@ -47,29 +47,27 @@
         }
     </style>
 </head>
-<body class="bg-[#FBF7F0]">
+<body class="bg-[#FAF7F2]">
 
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-[#4A5D6B] shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <a href="/" class="text-2xl font-extrabold text-[#2C1810]">
-                    <span class="text-[#C8963E]">LOGO</span>
+                <a href="/" class="text-2xl font-extrabold text-white">
+                    Avto<span class="text-[#C4907C]">Blog</span>
                 </a>
                 
                 <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="/" class="text-[#2C1810] hover:text-[#C8963E] transition-colors text-sm font-medium">Главная</a>
-                    <a href="/credit-trade-in" class="text-[#2C1810] hover:text-[#C8963E] transition-colors text-sm font-medium">Кредит / Trade-In</a>
-                    <a href="/chatbot" class="text-[#C8963E] font-bold text-sm">Чат-бот</a>
-                    <a href="/reviews" class="text-[#2C1810] hover:text-[#C8963E] transition-colors text-sm font-medium">Отзывы</a>
+                    <a href="/" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Главная</a>
+                    <a href="/credit-trade-in" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Кредит / Trade-In</a>
+                    <a href="/chatbot" class="text-[#C4907C] font-bold text-sm">Чат-бот</a>
+                    <a href="/reviews" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Отзывы</a>
                 </nav>
                 
                 <div class="flex items-center space-x-4">
-                    <a href="tel:88001234567" class="hidden md:block text-[#2C1810] font-bold text-lg">
-                        8-800-123-45-67
-                    </a>
-                    <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-[#FBF7F0]">
-                        <svg class="w-6 h-6 text-[#2C1810]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="tel:88001234567" class="hidden md:block text-white font-bold text-lg">8-800-123-45-67</a>
+                    <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-[#3D4F5C]">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
@@ -77,12 +75,12 @@
             </div>
         </div>
         
-        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <div id="mobileMenu" class="hidden lg:hidden bg-[#4A5D6B] border-t border-[#3D4F5C]">
             <div class="px-4 py-4 space-y-3">
-                <a href="/" class="block text-[#2C1810] hover:text-[#C8963E] font-medium">Главная</a>
-                <a href="/credit-trade-in" class="block text-[#2C1810] hover:text-[#C8963E] font-medium">Кредит / Trade-In</a>
-                <a href="/chatbot" class="block text-[#C8963E] font-bold">Чат-бот</a>
-                <a href="/reviews" class="block text-[#2C1810] hover:text-[#C8963E] font-medium">Отзывы</a>
+                <a href="/" class="block text-white/70 hover:text-[#C4907C] font-medium">Главная</a>
+                <a href="/credit-trade-in" class="block text-white/70 hover:text-[#C4907C] font-medium">Кредит / Trade-In</a>
+                <a href="/chatbot" class="block text-[#C4907C] font-bold">Чат-бот</a>
+                <a href="/reviews" class="block text-white/70 hover:text-[#C4907C] font-medium">Отзывы</a>
             </div>
         </div>
     </header>
@@ -90,12 +88,12 @@
     <!-- Chat Container -->
     <section class="py-8 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-[#C8963E]/10">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-[#C4907C]/10">
                 
                 <!-- Chat Header -->
-                <div class="bg-gradient-to-r from-[#2C1810] to-[#3E2723] p-6 text-white">
+                <div class="bg-gradient-to-r from-[#4A5D6B] to-[#3D4F5C] p-6 text-white">
                     <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-[#0D7377] rounded-full flex items-center justify-center">
+                        <div class="w-12 h-12 bg-[#8BA89A] rounded-full flex items-center justify-center">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
@@ -108,42 +106,42 @@
                 </div>
                 
                 <!-- Chat Messages -->
-                <div id="chatMessages" class="chat-container overflow-y-auto p-6 space-y-4 bg-[#FBF7F0]">
+                <div id="chatMessages" class="chat-container overflow-y-auto p-6 space-y-4 bg-[#FAF7F2]">
                     
                     <!-- Welcome Message -->
                     <div class="message flex items-start space-x-3">
-                        <div class="w-10 h-10 bg-[#0D7377] rounded-full flex items-center justify-center flex-shrink-0">
+                        <div class="w-10 h-10 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm max-w-md">
-                            <p class="text-[#2C1810]">Привет! 👋 Я AI-ассистент AvtoBlog. Чем могу помочь?</p>
-                            <p class="text-xs text-[#2C1810]/50 mt-2">Только что</p>
+                        <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm max-w-md border border-[#C4907C]/5">
+                            <p class="text-[#3D4047]">Привет!  Я AI-ассистент AvtoBlog. Чем могу помочь?</p>
+                            <p class="text-xs text-[#7A7D82] mt-2">Только что</p>
                         </div>
                     </div>
                     
                     <!-- Quick Actions -->
                     <div class="message flex items-start space-x-3">
-                        <div class="w-10 h-10 bg-[#0D7377] rounded-full flex items-center justify-center flex-shrink-0">
+                        <div class="w-10 h-10 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm">
-                            <p class="text-[#2C1810] mb-3">Выберите тему:</p>
+                        <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm border border-[#C4907C]/5">
+                            <p class="text-[#3D4047] mb-3">Выберите тему:</p>
                             <div class="flex flex-wrap gap-2">
-                                <button onclick="sendQuickMessage('Как продать авто?')" class="bg-[#FBF7F0] hover:bg-[#C8963E] hover:text-white text-[#2C1810] px-4 py-2 rounded-xl text-sm font-medium transition-all">
-                                    💰 Продать авто
+                                <button onclick="sendQuickMessage('Как продать авто?')" class="bg-[#FAF7F2] hover:bg-[#C4907C] hover:text-white text-[#3D4047] px-4 py-2 rounded-xl text-sm font-medium transition-all border border-[#C4907C]/10">
+                                     Продать авто
                                 </button>
-                                <button onclick="sendQuickMessage('Расскажите о Trade-In')" class="bg-[#FBF7F0] hover:bg-[#C8963E] hover:text-white text-[#2C1810] px-4 py-2 rounded-xl text-sm font-medium transition-all">
-                                    🔄 Trade-In
+                                <button onclick="sendQuickMessage('Расскажите о Trade-In')" class="bg-[#FAF7F2] hover:bg-[#C4907C] hover:text-white text-[#3D4047] px-4 py-2 rounded-xl text-sm font-medium transition-all border border-[#C4907C]/10">
+                                     Trade-In
                                 </button>
-                                <button onclick="sendQuickMessage('Как оформить кредит?')" class="bg-[#FBF7F0] hover:bg-[#C8963E] hover:text-white text-[#2C1810] px-4 py-2 rounded-xl text-sm font-medium transition-all">
-                                    💳 Кредит
+                                <button onclick="sendQuickMessage('Как оформить кредит?')" class="bg-[#FAF7F2] hover:bg-[#C4907C] hover:text-white text-[#3D4047] px-4 py-2 rounded-xl text-sm font-medium transition-all border border-[#C4907C]/10">
+                                     Кредит
                                 </button>
-                                <button onclick="sendQuickMessage('Контакты')" class="bg-[#FBF7F0] hover:bg-[#C8963E] hover:text-white text-[#2C1810] px-4 py-2 rounded-xl text-sm font-medium transition-all">
-                                    📞 Контакты
+                                <button onclick="sendQuickMessage('Контакты')" class="bg-[#FAF7F2] hover:bg-[#C4907C] hover:text-white text-[#3D4047] px-4 py-2 rounded-xl text-sm font-medium transition-all border border-[#C4907C]/10">
+                                     Контакты
                                 </button>
                             </div>
                         </div>
@@ -152,18 +150,18 @@
                 </div>
                 
                 <!-- Chat Input -->
-                <div class="border-t border-[#C8963E]/10 p-4 bg-white">
+                <div class="border-t border-[#C4907C]/10 p-4 bg-white">
                     <form id="chatForm" class="flex items-center space-x-3">
                         <input 
                             type="text" 
                             id="messageInput" 
                             placeholder="Напишите сообщение..." 
-                            class="flex-1 bg-[#FBF7F0] border border-[#C8963E]/20 rounded-xl px-5 py-3 text-[#2C1810] placeholder-[#2C1810]/40 focus:outline-none focus:border-[#C8963E] focus:ring-4 focus:ring-[#C8963E]/10"
+                            class="flex-1 bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-3 text-[#3D4047] placeholder-[#7A7D82] focus:outline-none focus:border-[#C4907C] focus:ring-4 focus:ring-[#C4907C]/10"
                             autocomplete="off"
                         >
                         <button 
                             type="submit" 
-                            class="bg-[#C8963E] hover:bg-[#B8860B] text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg flex items-center space-x-2"
+                            class="bg-[#C4907C] hover:bg-[#B07D6A] text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg flex items-center space-x-2"
                         >
                             <span class="hidden sm:inline">Отправить</span>
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,25 +176,25 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#2C1810] py-12 px-4 sm:px-6 lg:px-8 mt-16">
+    <footer class="bg-[#4A5D6B] py-12 px-4 sm:px-6 lg:px-8 mt-16">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
                 <div>
-                    <span class="text-xl font-extrabold">LOGO</span>
+                    <span class="text-xl font-extrabold">Avto<span class="text-[#C4907C]">Blog</span></span>
                     <p class="text-white/50 text-sm mt-2">Сервис продажи и обмена авто</p>
                 </div>
                 <div>
                     <h3 class="font-bold mb-3">Контакты</h3>
-                    <p class="text-[#C8963E] text-xl font-extrabold">8-800-123-45-67</p>
+                    <p class="text-[#C4907C] text-xl font-extrabold">8-800-123-45-67</p>
                     <p class="text-white/50 text-sm mt-2">offer@avtoblog.ru</p>
                     <p class="text-white/50 text-sm mt-1">г. Москва, ул. Примерная, 123</p>
                 </div>
                 <div>
                     <h3 class="font-bold mb-3">Навигация</h3>
                     <ul class="space-y-2 text-sm text-white/50">
-                        <li><a href="/" class="hover:text-[#C8963E]">Главная</a></li>
-                        <li><a href="/credit-trade-in" class="hover:text-[#C8963E]">Кредит / Trade-In</a></li>
-                        <li><a href="/reviews" class="hover:text-[#C8963E]">Отзывы</a></li>
+                        <li><a href="/" class="hover:text-[#C4907C]">Главная</a></li>
+                        <li><a href="/credit-trade-in" class="hover:text-[#C4907C]">Кредит / Trade-In</a></li>
+                        <li><a href="/reviews" class="hover:text-[#C4907C]">Отзывы</a></li>
                     </ul>
                 </div>
             </div>
@@ -228,19 +226,23 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message flex items-start space-x-3' + (isUser ? ' flex-row-reverse space-x-reverse' : '');
             
+            // Новые цвета для аватаров
             const avatar = isUser 
-                ? '<div class="w-10 h-10 bg-[#C8963E] rounded-full flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">Я</span></div>'
-                : '<div class="w-10 h-10 bg-[#0D7377] rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>';
+                ? '<div class="w-10 h-10 bg-[#C4907C] rounded-full flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">Я</span></div>'
+                : '<div class="w-10 h-10 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>';
             
+            // Новые цвета для пузырей сообщений
             const bubbleClass = isUser 
-                ? 'bg-[#C8963E] text-white rounded-2xl rounded-tr-none'
-                : 'bg-white text-[#2C1810] rounded-2xl rounded-tl-none';
+                ? 'bg-[#C4907C] text-white rounded-2xl rounded-tr-none'
+                : 'bg-white text-[#3D4047] rounded-2xl rounded-tl-none border border-[#C4907C]/5';
+            
+            const timeClass = isUser ? 'text-white/60' : 'text-[#7A7D82]';
             
             messageDiv.innerHTML = `
                 ${avatar}
                 <div class="${bubbleClass} p-4 shadow-sm max-w-md">
                     <p>${text.replace(/\n/g, '<br>')}</p>
-                    <p class="text-xs ${isUser ? 'text-white/60' : 'text-[#2C1810]/50'} mt-2">Только что</p>
+                    <p class="text-xs ${timeClass} mt-2">Только что</p>
                 </div>
             `;
             
@@ -253,12 +255,12 @@
             typingDiv.className = 'message flex items-start space-x-3';
             typingDiv.id = 'typingIndicator';
             typingDiv.innerHTML = `
-                <div class="w-10 h-10 bg-[#0D7377] rounded-full flex items-center justify-center flex-shrink-0">
+                <div class="w-10 h-10 bg-[#8BA89A] rounded-full flex items-center justify-center flex-shrink-0">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm">
+                <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm border border-[#C4907C]/5">
                     <div class="typing-indicator">
                         <span></span>
                         <span></span>
