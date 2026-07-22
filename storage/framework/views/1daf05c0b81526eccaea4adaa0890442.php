@@ -174,56 +174,7 @@
             </div>
         </div>
     </section>
- <!-- 1. Модалка "Оставить заявку" (из шапки) -->
-    <div id="leadModal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 modal-backdrop" onclick="closeLeadModal()"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl shadow-2xl p-8 w-full max-w-lg border border-[#C4907C]/10">
-            <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-[#7A7D82] hover:text-[#3D4047]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h2 class="text-2xl font-extrabold text-[#3D4047] mb-6">Оставить заявку</h2>
-            
-            <form class="lead-form-ajax space-y-4" data-type="general">
-                <?php echo csrf_field(); ?>
-                <input type="hidden" name="service_type" value="general">
-                
-                <div>
-                    <label class="block text-sm font-medium text-[#7A7D82] mb-2">Тип лица</label>
-                    <select name="entity_type" class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] focus:outline-none focus:border-[#C4907C] focus:ring-4 focus:ring-[#C4907C]/10">
-                        <option value="physical">Физическое лицо</option>
-                        <option value="legal">Юридическое лицо</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-[#7A7D82] mb-2">Имя</label>
-                    <input type="text" name="name" placeholder="Ваше имя" class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] placeholder-[#7A7D82] focus:outline-none focus:border-[#C4907C] focus:ring-4 focus:ring-[#C4907C]/10">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-[#7A7D82] mb-2">Телефон</label>
-                    <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] placeholder-[#7A7D82] focus:outline-none focus:border-[#C4907C] focus:ring-4 focus:ring-[#C4907C]/10">
-                </div>
-                
-                <button type="submit" class="w-full bg-[#C4907C] hover:bg-[#B07D6A] text-white font-bold py-4 rounded-xl transition-all shadow-lg flex justify-center items-center gap-2">
-                    <span>Отправить заявку</span>
-                </button>
-            </form>
-        </div>
-    </div>
 
-    <!-- 2. Модалка "Успешная отправка" -->
-    <div id="successModal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 modal-backdrop"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md border border-[#8BA89A]/30 text-center">
-            <div class="w-16 h-16 bg-[#8BA89A] rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-            </div>
-            <h2 class="text-2xl font-extrabold text-[#3D4047] mb-2">Заявка отправлена!</h2>
-            <p class="text-[#7A7D82] mb-6">Наш менеджер свяжется с вами в ближайшее время для уточнения деталей.</p>
-            <button onclick="closeSuccessModal()" class="w-full bg-[#4A5D6B] hover:bg-[#3D4F5C] text-white font-bold py-3 rounded-xl transition-all">
-                Отлично, спасибо!
-            </button>
-        </div>
-    </div>
     <!-- Footer -->
     <footer class="bg-[#4A5D6B] py-12 px-4 sm:px-6 lg:px-8 mt-16">
         <div class="max-w-7xl mx-auto">
@@ -325,65 +276,7 @@
             const indicator = document.getElementById('typingIndicator');
             if (indicator) indicator.remove();
         }
-         function openLeadModal() {
-            document.getElementById('leadModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Блокируем скролл фона
-        }
         
-        function closeLeadModal() {
-            document.getElementById('leadModal').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        function showSuccessModal() {
-            closeLeadModal(); // Закрываем форму, если она была открыта
-            document.getElementById('successModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        // AJAX отправка форм без перезагрузки страницы
-        document.querySelectorAll('.lead-form-ajax').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(this);
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerHTML;
-                
-                // Анимация загрузки
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Отправка...';
-                
-                fetch('<?php echo e(route("leads.store")); ?>', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        form.reset(); // Очищаем форму
-                        showSuccessModal(); // Показываем красивое окошко
-                    }
-                })
-                .catch(error => {
-                    console.error('Ошибка:', error);
-                    alert('Произошла ошибка при отправке. Попробуйте позже.');
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnText;
-                });
-            });
-        });
         function getBotResponse(userMessage) {
             const lowerMessage = userMessage.toLowerCase();
             

@@ -26,6 +26,8 @@ use App\Filament\Resources\Examples\ExampleResource;
 use App\Filament\Resources\CalculatorSettings\CalculatorSettingResource;
 use App\Filament\Resources\Pages\PageResource;
 use App\Filament\Resources\Users\UserResource;
+use App\Filament\Resources\AiCars\AiCarResource; 
+
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -76,7 +78,7 @@ class AdminPanelProvider extends PanelProvider
                 $items = array_merge($items, ExampleResource::getNavigationItems());
                 $items = array_merge($items, CalculatorSettingResource::getNavigationItems());
                 $items = array_merge($items, PageResource::getNavigationItems());
-                
+                $items = array_merge($items, AiCarResource::getNavigationItems());
                 // Users только для админа
                 if ($user && $user->isAdmin()) {
                     $items = array_merge($items, UserResource::getNavigationItems());

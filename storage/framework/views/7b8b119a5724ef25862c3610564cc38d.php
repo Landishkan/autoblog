@@ -452,5 +452,27 @@
         });
     });
     </script>
+    <?php if (isset($component)) { $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4 = $attributes; } ?>
+<?php $component = App\View\Components\ChatbotWidget::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('chatbot-widget'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\ChatbotWidget::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $attributes = $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $component = $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
 </body>
 </html><?php /**PATH D:\laragon\www\avtoblog\resources\views/home.blade.php ENDPATH**/ ?>
