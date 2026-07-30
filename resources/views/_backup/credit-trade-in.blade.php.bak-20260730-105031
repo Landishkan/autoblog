@@ -416,7 +416,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
                 @foreach($reviews as $review)
                 <figure class="rise h-full flex flex-col border-t border-sand/15 pt-8" style="--d:{{ $loop->index * 100 }}ms">
-                    <blockquote class="font-medium text-[17px] leading-[1.6] text-sand/95 flex-grow">
+                    <blockquote class="font-display font-medium text-[19px] leading-[1.5] text-sand/85 flex-grow">
                         {{ $review->text }}
                     </blockquote>
                     <figcaption class="flex items-center gap-4 mt-8 pt-6 border-t border-sand/10">

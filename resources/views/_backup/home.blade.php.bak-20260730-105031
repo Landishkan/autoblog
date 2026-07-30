@@ -382,7 +382,7 @@
                                 @endfor
                             </div>
 
-                            <blockquote class="font-medium text-[18px] leading-[1.6] text-sand/95 flex-grow">
+                            <blockquote class="font-display font-medium text-[21px] leading-[1.5] text-sand/85 flex-grow">
                                 {{ $review->text }}
                             </blockquote>
 

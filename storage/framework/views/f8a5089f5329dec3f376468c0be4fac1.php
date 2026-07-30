@@ -40,4 +40,4 @@
         .chatbot-fab-btn { width: 3rem; height: 3rem; }
         .chatbot-fab-icon { height: 1.5rem; width: 1.5rem; }
     }
-</style>
+</style><?php /**PATH /Users/lianavaleeva/Herd/autoblog/resources/views/components/chatbot-widget.blade.php ENDPATH**/ ?>
