@@ -21,7 +21,8 @@ Route::post('/reviews', [ReviewsController::class, 'store'])->name('reviews.stor
 
 // Заявки
 Route::post('/leads', [LeadController::class, 'store'])->name('leads.store');
-
+//чат бот
+Route::post('/chatbot/message', [ChatbotController::class, 'message'])->name('chatbot.message');
 // Заглушки для старых страниц (можно удалить если не нужны)
 Route::view('/trade-in', 'trade-in');
 Route::view('/credit', 'credit');

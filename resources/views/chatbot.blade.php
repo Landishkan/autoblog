@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AI-ассистент — AvtoBlog</title>
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cpath d='M7 19.5h18M9.5 19.5l1.8-4.6a2.5 2.5 0 0 1 2.3-1.6h5.2a2.5 2.5 0 0 1 2 1l3.2 4.2' stroke='%23C4907C' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11.5' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3C/svg%3E">
@@ -320,37 +321,32 @@
     </div>
 </footer>
 
+<!-- ============================== JAVASCRIPT ============================== -->
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Мобильное меню
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('open'); menuBtn.classList.toggle('active'); });
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuBtn.classList.remove('active'); }));
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => { 
+            mobileMenu.classList.toggle('open'); 
+            menuBtn.classList.toggle('active'); 
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { 
+            mobileMenu.classList.remove('open'); 
+            menuBtn.classList.remove('active'); 
+        }));
+    }
 
-    const header = document.getElementById('siteHeader');
-    window.addEventListener('scroll', () => header.classList.toggle('solid', window.scrollY > 40), { passive: true });
-
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
-    document.querySelectorAll('.rise, .rule').forEach(el => io.observe(el));
-
-    /* ================= ЛОГИКА ЧАТ-БОТА ================= */
+    // 2. Элементы чата
     const chatMessages = document.getElementById('chatMessages');
     const chatForm = document.getElementById('chatForm');
     const messageInput = document.getElementById('messageInput');
 
-    const botResponses = {
-        'продать': 'Чтобы продать авто, оставьте заявку на главной странице с госномером. Мы оценим его и свяжемся с вами в течение 2 часов!',
-        'trade-in': 'Trade-In — это обмен вашего старого авто на новое с доплатой. Вы получаете выгоду до 15% по сравнению с обычной продажей. Хотите узнать подробнее?',
-        'кредит': 'Мы предлагаем кредит от 4.9% годовых на срок до 7 лет. Решение за 15 минут онлайн! Перейдите на страницу Кредит/Trade-In для калькулятора.',
-        'контакты': 'Телефон: 8-800-123-45-67\nEmail: offer@avtoblog.ru\nАдрес: г. Москва, ул. Примерная, 123\n\nРаботаем ежедневно с 9:00 до 21:00',
-        'цена': 'Стоимость зависит от марки, года выпуска и состояния авто. Оставьте заявку с госномером — мы оценим бесплатно!',
-        'документы': 'Для продажи нужны: паспорт, ПТС, свидетельство о регистрации. Для Trade-In дополнительно — диагностическая карта.',
-        'default': 'Спасибо за вопрос! Я передам его менеджеру. А пока вы можете оставить заявку на сайте, и мы свяжемся с вами в ближайшее время!'
-    };
-
+    // Иконка бота для переиспользования
     const botIcon = `<svg class="w-4 h-4 text-sand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`;
 
+    // 3. Функция добавления сообщения
     function addMessage(text, isUser = false) {
         const messageDiv = document.createElement('div');
         messageDiv.className = 'msg' + (isUser ? ' user' : '');
@@ -359,17 +355,22 @@
             ? `<div class="msg-avatar user"><span class="text-ink font-bold text-[13px]">Я</span></div>`
             : `<div class="msg-avatar bot">${botIcon}</div>`;
 
+        // Форматируем текст: переносы строк и жирный шрифт
+        let formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
         messageDiv.innerHTML = `
             ${avatar}
             <div class="bubble ${isUser ? 'user' : 'bot'}">
-                <p>${text.replace(/\n/g, '<br>')}</p>
+                <p>${formattedText}</p>
                 <p class="stamp">Только что</p>
             </div>
         `;
+        
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
+    // 4. Индикатор печати
     function addTypingIndicator() {
         const typingDiv = document.createElement('div');
         typingDiv.className = 'msg';
@@ -389,34 +390,64 @@
         if (indicator) indicator.remove();
     }
 
-    function getBotResponse(userMessage) {
-        const lowerMessage = userMessage.toLowerCase();
-        for (const [key, response] of Object.entries(botResponses)) {
-            if (key !== 'default' && lowerMessage.includes(key)) return response;
-        }
-        return botResponses.default;
-    }
-
-    function sendQuickMessage(text) {
+    // 5. Быстрые сообщения (кнопки-чипсы)
+    window.sendQuickMessage = function(text) {
         messageInput.value = text;
         chatForm.dispatchEvent(new Event('submit'));
     }
 
-    chatForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const message = messageInput.value.trim();
-        if (!message) return;
+    // 6. ОТПРАВКА НА СЕРВЕР
+    if (chatForm) {
+        chatForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (!message) return;
 
-        addMessage(message, true);
-        messageInput.value = '';
-        addTypingIndicator();
+            // Добавляем сообщение пользователя
+            addMessage(message, true);
+            messageInput.value = '';
+            
+            // Показываем, что бот "печатает"
+            addTypingIndicator();
 
-        setTimeout(() => {
-            removeTypingIndicator();
-            addMessage(getBotResponse(message), false);
-        }, 900 + Math.random() * 900);
-    });
+            // Делаем запрос к Laravel контроллеру
+            fetch('/chatbot/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => {
+                removeTypingIndicator();
+                // Добавляем умный ответ от сервера
+                addMessage(data.text, false);
+            })
+            .catch(error => {
+                removeTypingIndicator();
+                console.error('Ошибка чата:', error);
+                addMessage("Упс, произошла ошибка соединения. Попробуйте еще раз!", false);
+            });
+        });
+    }
+});
 </script>
-
+<script>
+// Принудительно показываем все элементы с классом rise
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        document.querySelectorAll('.rise').forEach(el => {
+            el.classList.add('in');
+        });
+        console.log('✅ Элементы .rise принудительно показаны');
+    }, 100);
+});
+</script>
 </body>
 </html>
