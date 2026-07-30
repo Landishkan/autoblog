@@ -211,7 +211,7 @@
                     <h2 class="font-display font-bold text-[26px] leading-tight mt-2 mb-6">Оставьте заявку</h2>
 
                     <form class="lead-form-ajax space-y-4" data-type="general">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <input type="hidden" name="service_type" value="general">
 
                         <div class="fld">
@@ -300,35 +300,35 @@
             </div>
 
             <div id="creditExamples" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                @foreach($creditExamples as $example)
-                <div class="ex-card rise overflow-hidden" style="--d:{{ $loop->index * 100 }}ms">
-                    @if($example->image)
-                        <img src="{{ Storage::url($example->image) }}" class="w-full h-48 object-cover" alt="{{ $example->title }}">
-                    @else
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $creditExamples; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $example): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                <div class="ex-card rise overflow-hidden" style="--d:<?php echo e($loop->index * 100); ?>ms">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($example->image): ?>
+                        <img src="<?php echo e(Storage::url($example->image)); ?>" class="w-full h-48 object-cover" alt="<?php echo e($example->title); ?>">
+                    <?php else: ?>
                         <div class="w-full h-48 bg-sand/5 flex items-center justify-center text-sand/20 text-[13px] uppercase tracking-label">Нет фото</div>
-                    @endif
+                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     <div class="p-6">
-                        <h3 class="font-display font-bold text-[18px] mb-2">{{ $example->title }}</h3>
-                        <p class="text-sand/50 text-[14px] leading-relaxed">{{ $example->description }}</p>
+                        <h3 class="font-display font-bold text-[18px] mb-2"><?php echo e($example->title); ?></h3>
+                        <p class="text-sand/50 text-[14px] leading-relaxed"><?php echo e($example->description); ?></p>
                     </div>
                 </div>
-                @endforeach
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
             </div>
 
             <div id="tradeInExamples" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
-                @foreach($tradeInExamples as $example)
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $tradeInExamples; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $example): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                 <div class="ex-card overflow-hidden">
-                    @if($example->image)
-                        <img src="{{ Storage::url($example->image) }}" class="w-full h-48 object-cover" alt="{{ $example->title }}">
-                    @else
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($example->image): ?>
+                        <img src="<?php echo e(Storage::url($example->image)); ?>" class="w-full h-48 object-cover" alt="<?php echo e($example->title); ?>">
+                    <?php else: ?>
                         <div class="w-full h-48 bg-sand/5 flex items-center justify-center text-sand/20 text-[13px] uppercase tracking-label">Нет фото</div>
-                    @endif
+                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     <div class="p-6">
-                        <h3 class="font-display font-bold text-[18px] mb-2">{{ $example->title }}</h3>
-                        <p class="text-sand/50 text-[14px] leading-relaxed">{{ $example->description }}</p>
+                        <h3 class="font-display font-bold text-[18px] mb-2"><?php echo e($example->title); ?></h3>
+                        <p class="text-sand/50 text-[14px] leading-relaxed"><?php echo e($example->description); ?></p>
                     </div>
                 </div>
-                @endforeach
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
             </div>
         </div>
 
@@ -341,22 +341,24 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
-                @foreach($reviews as $review)
-                <figure class="rise h-full flex flex-col border-t border-sand/15 pt-8" style="--d:{{ $loop->index * 100 }}ms">
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                <figure class="rise h-full flex flex-col border-t border-sand/15 pt-8" style="--d:<?php echo e($loop->index * 100); ?>ms">
                     <blockquote class="font-medium text-[17px] leading-[1.6] text-sand/95 flex-grow">
-                        {{ $review->text }}
+                        <?php echo e($review->text); ?>
+
                     </blockquote>
                     <figcaption class="flex items-center gap-4 mt-8 pt-6 border-t border-sand/10">
                         <span class="w-11 h-11 rounded-full border border-clay/45 flex items-center justify-center font-display font-bold text-[17px] text-clay">
-                            {{ mb_substr($review->client_name, 0, 1) }}
+                            <?php echo e(mb_substr($review->client_name, 0, 1)); ?>
+
                         </span>
                         <span>
-                            <span class="block text-[13px] font-semibold">{{ $review->client_name }}</span>
-                            <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-1">{{ $review->car_model }}</span>
+                            <span class="block text-[13px] font-semibold"><?php echo e($review->client_name); ?></span>
+                            <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-1"><?php echo e($review->car_model); ?></span>
                         </span>
                     </figcaption>
                 </figure>
-                @endforeach
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
             </div>
         </div>
     </div>
@@ -392,7 +394,7 @@
             </div>
         </div>
         <div class="border-t border-sand/10 pt-8">
-            <p class="text-[10px] uppercase tracking-label text-sand/25">© {{ date('Y') }} AvtoBlog</p>
+            <p class="text-[10px] uppercase tracking-label text-sand/25">© <?php echo e(date('Y')); ?> AvtoBlog</p>
         </div>
     </div>
 </footer>
@@ -407,7 +409,7 @@
         <h2 class="font-display font-bold text-[26px] leading-tight mb-6">Оставить заявку</h2>
 
         <form class="lead-form-ajax space-y-4" data-type="general">
-            @csrf
+            <?php echo csrf_field(); ?>
             <input type="hidden" name="service_type" value="general">
             <div class="fld">
                 <label class="block text-[10px] uppercase tracking-label font-semibold text-muted mb-1">Тип лица</label>
@@ -556,7 +558,7 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Отправляем…';
 
-            fetch('{{ route("leads.store") }}', {
+            fetch('<?php echo e(route("leads.store")); ?>', {
                 method: 'POST', body: formData,
                 headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' }
             })
@@ -581,6 +583,28 @@
     });
 </script>
 
-<x-chatbot-widget />
+<?php if (isset($component)) { $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4 = $attributes; } ?>
+<?php $component = App\View\Components\ChatbotWidget::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('chatbot-widget'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\ChatbotWidget::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $attributes = $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $component = $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
 </body>
 </html>
+<?php /**PATH D:\laragon\www\avtoblog\resources\views/credit-trade-in.blade.php ENDPATH**/ ?>
