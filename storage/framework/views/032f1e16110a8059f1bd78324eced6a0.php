@@ -325,17 +325,25 @@
 <!-- ============================== JAVASCRIPT ============================== -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // 0. Непрозрачная шапка при скролле
+    const header = document.getElementById('siteHeader');
+    const onScroll = () => header.classList.toggle('solid', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
     // 1. Мобильное меню
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => { 
-            mobileMenu.classList.toggle('open'); 
-            menuBtn.classList.toggle('active'); 
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            menuBtn.classList.toggle('active');
+            header.classList.toggle('solid', mobileMenu.classList.contains('open') || window.scrollY > 40);
         });
-        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { 
-            mobileMenu.classList.remove('open'); 
-            menuBtn.classList.remove('active'); 
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            menuBtn.classList.remove('active');
+            header.classList.toggle('solid', window.scrollY > 40);
         }));
     }
 

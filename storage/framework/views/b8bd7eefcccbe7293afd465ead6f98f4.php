@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отзывы — AvtoBlog</title>
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cpath d='M7 19.5h18M9.5 19.5l1.8-4.6a2.5 2.5 0 0 1 2.3-1.6h5.2a2.5 2.5 0 0 1 2 1l3.2 4.2' stroke='%23C4907C' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11.5' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cg transform='translate(1,1)'%3E%3Cpath d='M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z' fill='%23C4907C'/%3E%3Ccircle cx='8' cy='21.2' r='2.6' fill='%23B07D6A'/%3E%3Ccircle cx='22' cy='21.2' r='2.6' fill='%23B07D6A'/%3E%3C/g%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -46,11 +46,10 @@
         .rule{ height:1px; background:var(--clay); opacity:.5; transform:scaleX(0); transform-origin:left; transition:transform 1.1s var(--ease); transition-delay:var(--d,0ms); }
         .rule.in{ transform:scaleX(1); }
 
-        .mark{ width:30px; height:30px; display:block; overflow:visible; }
-        .mark .bar{ transition:transform .6s var(--ease); transform-box:fill-box; transform-origin:center; }
-        .logo:hover .mark .bar-l{ transform:translateX(-1.5px); }
-        .logo:hover .mark .bar-r{ transform:translateX(1.5px); }
-        .logo:hover .mark .bar-x{ transform:scaleX(1.15); }
+        .mark{ width:30px; height:30px; display:block; overflow:visible; transition:transform .5s var(--ease); }
+        .mark .mark-wheel{ transition:transform .6s var(--ease); transform-box:fill-box; transform-origin:center; }
+        .logo:hover .mark{ transform:translateY(-2px); }
+        .logo:hover .mark .mark-wheel{ transform:rotate(160deg); }
 
         .site-header{ transition:background .5s var(--ease), border-color .5s var(--ease); border-bottom:1px solid transparent; }
         .site-header.solid{ background:rgba(61,64,71,.9); backdrop-filter:blur(18px) saturate(150%); border-bottom-color:rgba(250,247,242,.09); }
@@ -146,8 +145,9 @@
         <div class="flex items-center justify-between h-20">
             <a href="/" class="logo flex items-center gap-3.5">
                 <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="bar bar-l" d="M5 25L14.3 5.6a.8.8 0 0 1 1.4 0L25 25" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line class="bar bar-x" x1="10" y1="16.4" x2="20" y2="16.4" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round"/>
+                    <path class="mark-body" d="M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z" fill="#C4907C"/>
+                    <circle class="mark-wheel" cx="8" cy="21.2" r="2.6" fill="#B07D6A"/>
+                    <circle class="mark-wheel" cx="22" cy="21.2" r="2.6" fill="#B07D6A"/>
                 </svg>
                 <span class="font-display font-semibold text-[22px] leading-none tracking-tight">Avto<span class="text-clay">Blog</span></span>
             </a>
@@ -302,18 +302,23 @@
             <div>
                 <a href="/" class="logo inline-flex items-center gap-3.5 mb-6">
                     <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="bar bar-l" d="M5 25L14.3 5.6a.8.8 0 0 1 1.4 0L25 25" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line class="bar bar-x" x1="10" y1="16.4" x2="20" y2="16.4" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round"/>
+                        <path class="mark-body" d="M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z" fill="#C4907C"/>
+                        <circle class="mark-wheel" cx="8" cy="21.2" r="2.6" fill="#B07D6A"/>
+                        <circle class="mark-wheel" cx="22" cy="21.2" r="2.6" fill="#B07D6A"/>
                     </svg>
                     <span class="font-display font-semibold text-[22px] leading-none tracking-tight">Avto<span class="text-clay">Blog</span></span>
                 </a>
-                <p class="text-sand/40 text-[15px] leading-relaxed max-w-xs">Сервис продажи и обмена автомобилей.</p>
+                <p class="text-sand/40 text-[15px] leading-relaxed max-w-xs">Сервис продажи, обмена и ремонта автомобилей.</p>
             </div>
             <div>
                 <p class="text-[10px] uppercase tracking-eyebrow font-semibold text-sand/35 mb-7">Контакты</p>
                 <a href="tel:88001234567" class="font-display font-bold text-[28px] leading-none hover:text-clay transition-colors duration-500">8-800-123-45-67</a>
                 <p class="text-sand/40 text-[15px] mt-6">offer@avtoblog.ru</p>
-                <p class="text-sand/40 text-[15px] mt-1.5">г. Москва, ул. Примерная, 123</p>
+                <p class="text-sand/40 text-[15px] mt-1.5">г. Казань, ул. Примерная, 123</p>
+                <a href="https://t.me/AVTOBLOGRF" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 text-sand/40 text-[15px] hover:text-clay transition-colors duration-500">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.18 1.897-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.209.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212-.07-.062-.174-.041-.249-.024-.106.024-1.793 1.14-5.061 3.345-.479.329-.913.489-1.302.48-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.023-1.627 4.475-1.635.099-.002.321.023.465.14.121.099.154.232.17.325.016.093.036.306.02.472z"/></svg>
+                    @AVTOBLOGRF
+                </a>
             </div>
             <div>
                 <p class="text-[10px] uppercase tracking-eyebrow font-semibold text-sand/35 mb-7">Навигация</p>
