@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AI-ассистент — AvtoBlog</title>
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cpath d='M7 19.5h18M9.5 19.5l1.8-4.6a2.5 2.5 0 0 1 2.3-1.6h5.2a2.5 2.5 0 0 1 2 1l3.2 4.2' stroke='%23C4907C' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11.5' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cg transform='translate(1,1)'%3E%3Cpath d='M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z' fill='%23C4907C'/%3E%3Ccircle cx='8' cy='21.2' r='2.6' fill='%23B07D6A'/%3E%3Ccircle cx='22' cy='21.2' r='2.6' fill='%23B07D6A'/%3E%3C/g%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -46,11 +46,10 @@
         .rule{ height:1px; background:var(--clay); opacity:.5; transform:scaleX(0); transform-origin:left; transition:transform 1.1s var(--ease); transition-delay:var(--d,0ms); }
         .rule.in{ transform:scaleX(1); }
 
-        .mark{ width:30px; height:30px; display:block; overflow:visible; }
-        .mark .bar{ transition:transform .6s var(--ease); transform-box:fill-box; transform-origin:center; }
-        .logo:hover .mark .bar-l{ transform:translateX(-1.5px); }
-        .logo:hover .mark .bar-r{ transform:translateX(1.5px); }
-        .logo:hover .mark .bar-x{ transform:scaleX(1.15); }
+        .mark{ width:30px; height:30px; display:block; overflow:visible; transition:transform .5s var(--ease); }
+        .mark .mark-wheel{ transition:transform .6s var(--ease); transform-box:fill-box; transform-origin:center; }
+        .logo:hover .mark{ transform:translateY(-2px); }
+        .logo:hover .mark .mark-wheel{ transform:rotate(160deg); }
 
         .site-header{ transition:background .5s var(--ease), border-color .5s var(--ease); border-bottom:1px solid transparent; }
         .site-header.solid{ background:rgba(61,64,71,.9); backdrop-filter:blur(18px) saturate(150%); border-bottom-color:rgba(250,247,242,.09); }
@@ -159,8 +158,9 @@
         <div class="flex items-center justify-between h-20">
             <a href="/" class="logo flex items-center gap-3.5">
                 <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="bar bar-l" d="M5 25L14.3 5.6a.8.8 0 0 1 1.4 0L25 25" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line class="bar bar-x" x1="10" y1="16.4" x2="20" y2="16.4" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round"/>
+                    <path class="mark-body" d="M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z" fill="#C4907C"/>
+                    <circle class="mark-wheel" cx="8" cy="21.2" r="2.6" fill="#B07D6A"/>
+                    <circle class="mark-wheel" cx="22" cy="21.2" r="2.6" fill="#B07D6A"/>
                 </svg>
                 <span class="font-display font-semibold text-[22px] leading-none tracking-tight">Avto<span class="text-clay">Blog</span></span>
             </a>
@@ -293,8 +293,9 @@
             <div>
                 <a href="/" class="logo inline-flex items-center gap-3.5 mb-6">
                     <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="bar bar-l" d="M5 25L14.3 5.6a.8.8 0 0 1 1.4 0L25 25" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line class="bar bar-x" x1="10" y1="16.4" x2="20" y2="16.4" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round"/>
+                        <path class="mark-body" d="M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z" fill="#C4907C"/>
+                        <circle class="mark-wheel" cx="8" cy="21.2" r="2.6" fill="#B07D6A"/>
+                        <circle class="mark-wheel" cx="22" cy="21.2" r="2.6" fill="#B07D6A"/>
                     </svg>
                     <span class="font-display font-semibold text-[22px] leading-none tracking-tight">Avto<span class="text-clay">Blog</span></span>
                 </a>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отзывы — AvtoBlog</title>
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cg transform='translate(1,1)'%3E%3Cpath d='M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z' fill='%23C4907C'/%3E%3Ccircle cx='8' cy='21.2' r='2.6' fill='%23B07D6A'/%3E%3Ccircle cx='22' cy='21.2' r='2.6' fill='%23B07D6A'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cpath d='M7 19.5h18M9.5 19.5l1.8-4.6a2.5 2.5 0 0 1 2.3-1.6h5.2a2.5 2.5 0 0 1 2 1l3.2 4.2' stroke='%23C4907C' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11.5' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -46,10 +46,11 @@
         .rule{ height:1px; background:var(--clay); opacity:.5; transform:scaleX(0); transform-origin:left; transition:transform 1.1s var(--ease); transition-delay:var(--d,0ms); }
         .rule.in{ transform:scaleX(1); }
 
-        .mark{ width:30px; height:30px; display:block; overflow:visible; transition:transform .5s var(--ease); }
-        .mark .mark-wheel{ transition:transform .6s var(--ease); transform-box:fill-box; transform-origin:center; }
-        .logo:hover .mark{ transform:translateY(-2px); }
-        .logo:hover .mark .mark-wheel{ transform:rotate(160deg); }
+        .mark{ width:30px; height:30px; display:block; overflow:visible; }
+        .mark .bar{ transition:transform .6s var(--ease); transform-box:fill-box; transform-origin:center; }
+        .logo:hover .mark .bar-l{ transform:translateX(-1.5px); }
+        .logo:hover .mark .bar-r{ transform:translateX(1.5px); }
+        .logo:hover .mark .bar-x{ transform:scaleX(1.15); }
 
         .site-header{ transition:background .5s var(--ease), border-color .5s var(--ease); border-bottom:1px solid transparent; }
         .site-header.solid{ background:rgba(61,64,71,.9); backdrop-filter:blur(18px) saturate(150%); border-bottom-color:rgba(250,247,242,.09); }
@@ -145,9 +146,8 @@
         <div class="flex items-center justify-between h-20">
             <a href="/" class="logo flex items-center gap-3.5">
                 <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="mark-body" d="M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z" fill="#C4907C"/>
-                    <circle class="mark-wheel" cx="8" cy="21.2" r="2.6" fill="#B07D6A"/>
-                    <circle class="mark-wheel" cx="22" cy="21.2" r="2.6" fill="#B07D6A"/>
+                    <path class="bar bar-l" d="M5 25L14.3 5.6a.8.8 0 0 1 1.4 0L25 25" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line class="bar bar-x" x1="10" y1="16.4" x2="20" y2="16.4" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round"/>
                 </svg>
                 <span class="font-display font-semibold text-[22px] leading-none tracking-tight">Avto<span class="text-clay">Blog</span></span>
             </a>
@@ -201,37 +201,39 @@
         <div class="rise relative pb-16" style="--d:180ms">
             <div class="swiper reviewsSwiper">
                 <div class="swiper-wrapper">
-                    @foreach($reviews as $review)
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                     <div class="swiper-slide">
                         <figure class="rv-card h-full flex flex-col p-8">
                             <div class="flex gap-1 mb-6">
-                                @for($i = 1; $i <= 5; $i++)
-                                    <svg class="w-3.5 h-3.5 {{ $i <= $review->rating ? 'text-clay' : 'text-sand/15' }}" fill="currentColor" viewBox="0 0 20 20">
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                                    <svg class="w-3.5 h-3.5 <?php echo e($i <= $review->rating ? 'text-clay' : 'text-sand/15'); ?>" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                                     </svg>
-                                @endfor
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                             </div>
 
                             <blockquote class="font-medium text-[17px] leading-[1.6] text-sand/95 flex-grow">
-                                {{ $review->text }}
+                                <?php echo e($review->text); ?>
+
                             </blockquote>
 
                             <figcaption class="flex items-center gap-4 mt-8 pt-6 border-t border-sand/10">
-                                @if($review->client_photo)
-                                    <img src="{{ Storage::url($review->client_photo) }}" class="w-11 h-11 rounded-full object-cover grayscale" alt="{{ $review->client_name }}">
-                                @else
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($review->client_photo): ?>
+                                    <img src="<?php echo e(Storage::url($review->client_photo)); ?>" class="w-11 h-11 rounded-full object-cover grayscale" alt="<?php echo e($review->client_name); ?>">
+                                <?php else: ?>
                                     <span class="w-11 h-11 rounded-full border border-clay/45 flex items-center justify-center font-display font-bold text-[16px] text-clay">
-                                        {{ mb_substr($review->client_name, 0, 1) }}
+                                        <?php echo e(mb_substr($review->client_name, 0, 1)); ?>
+
                                     </span>
-                                @endif
+                                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                                 <span>
-                                    <span class="block text-[13px] font-semibold">{{ $review->client_name }}</span>
-                                    <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-1">{{ $review->car_model }}</span>
+                                    <span class="block text-[13px] font-semibold"><?php echo e($review->client_name); ?></span>
+                                    <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-1"><?php echo e($review->car_model); ?></span>
                                 </span>
                             </figcaption>
                         </figure>
                     </div>
-                    @endforeach
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                 </div>
             </div>
 
@@ -251,42 +253,45 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($reviews as $review)
-            <div class="rv-card p-7 flex flex-col rise" style="--d:{{ ($loop->index % 6) * 90 }}ms">
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+            <div class="rv-card p-7 flex flex-col rise" style="--d:<?php echo e(($loop->index % 6) * 90); ?>ms">
                 <div class="flex gap-1 mb-5">
-                    @for($i = 1; $i <= 5; $i++)
-                        <svg class="w-3.5 h-3.5 {{ $i <= $review->rating ? 'text-clay' : 'text-sand/15' }}" fill="currentColor" viewBox="0 0 20 20">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                        <svg class="w-3.5 h-3.5 <?php echo e($i <= $review->rating ? 'text-clay' : 'text-sand/15'); ?>" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
-                    @endfor
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                 </div>
 
                 <p class="text-sand/75 text-[14px] leading-relaxed flex-grow">
-                    {{ $review->text }}
+                    <?php echo e($review->text); ?>
+
                 </p>
 
                 <div class="flex items-center gap-3 mt-7 pt-5 border-t border-sand/10">
-                    @if($review->client_photo)
-                        <img src="{{ Storage::url($review->client_photo) }}" class="w-9 h-9 rounded-full object-cover grayscale" alt="{{ $review->client_name }}">
-                    @else
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($review->client_photo): ?>
+                        <img src="<?php echo e(Storage::url($review->client_photo)); ?>" class="w-9 h-9 rounded-full object-cover grayscale" alt="<?php echo e($review->client_name); ?>">
+                    <?php else: ?>
                         <span class="w-9 h-9 rounded-full border border-clay/45 flex items-center justify-center font-display font-bold text-[13px] text-clay">
-                            {{ mb_substr($review->client_name, 0, 1) }}
+                            <?php echo e(mb_substr($review->client_name, 0, 1)); ?>
+
                         </span>
-                    @endif
+                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     <span>
-                        <span class="block text-[13px] font-semibold">{{ $review->client_name }}</span>
-                        <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-0.5">{{ $review->car_model }}</span>
+                        <span class="block text-[13px] font-semibold"><?php echo e($review->client_name); ?></span>
+                        <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-0.5"><?php echo e($review->car_model); ?></span>
                     </span>
                 </div>
             </div>
-            @endforeach
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
         </div>
 
-        @if($reviews->hasPages())
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($reviews->hasPages()): ?>
         <div class="pg-wrap mt-14">
-            {{ $reviews->links() }}
+            <?php echo e($reviews->links()); ?>
+
         </div>
-        @endif
+        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </div>
 </section>
 
@@ -297,23 +302,18 @@
             <div>
                 <a href="/" class="logo inline-flex items-center gap-3.5 mb-6">
                     <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="mark-body" d="M2 20v-2c0-1 .8-1.9 1.8-2l2.5-.3C7.6 12.9 11 10.6 15 10.6c3.6 0 6.8 1.9 8.5 4.8l2.7.6c1.4.3 2.4 1.5 2.4 2.9V20c0 .8-.7 1.5-1.5 1.5h-1.9a3.2 3.2 0 0 1-6.3 0H11.1a3.2 3.2 0 0 1-6.3 0H3.5C2.7 21.5 2 20.8 2 20Z" fill="#C4907C"/>
-                        <circle class="mark-wheel" cx="8" cy="21.2" r="2.6" fill="#B07D6A"/>
-                        <circle class="mark-wheel" cx="22" cy="21.2" r="2.6" fill="#B07D6A"/>
+                        <path class="bar bar-l" d="M5 25L14.3 5.6a.8.8 0 0 1 1.4 0L25 25" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line class="bar bar-x" x1="10" y1="16.4" x2="20" y2="16.4" stroke="#C4907C" stroke-width="2.6" stroke-linecap="round"/>
                     </svg>
                     <span class="font-display font-semibold text-[22px] leading-none tracking-tight">Avto<span class="text-clay">Blog</span></span>
                 </a>
-                <p class="text-sand/40 text-[15px] leading-relaxed max-w-xs">Сервис продажи, обмена и ремонта автомобилей.</p>
+                <p class="text-sand/40 text-[15px] leading-relaxed max-w-xs">Сервис продажи и обмена автомобилей.</p>
             </div>
             <div>
                 <p class="text-[10px] uppercase tracking-eyebrow font-semibold text-sand/35 mb-7">Контакты</p>
                 <a href="tel:88001234567" class="font-display font-bold text-[28px] leading-none hover:text-clay transition-colors duration-500">8-800-123-45-67</a>
                 <p class="text-sand/40 text-[15px] mt-6">offer@avtoblog.ru</p>
-                <p class="text-sand/40 text-[15px] mt-1.5">г. Казань, ул. Примерная, 123</p>
-                <a href="https://t.me/AVTOBLOGRF" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 text-sand/40 text-[15px] hover:text-clay transition-colors duration-500">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.18 1.897-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.209.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212-.07-.062-.174-.041-.249-.024-.106.024-1.793 1.14-5.061 3.345-.479.329-.913.489-1.302.48-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.023-1.627 4.475-1.635.099-.002.321.023.465.14.121.099.154.232.17.325.016.093.036.306.02.472z"/></svg>
-                    @AVTOBLOGRF
-                </a>
+                <p class="text-sand/40 text-[15px] mt-1.5">г. Москва, ул. Примерная, 123</p>
             </div>
             <div>
                 <p class="text-[10px] uppercase tracking-eyebrow font-semibold text-sand/35 mb-7">Навигация</p>
@@ -325,7 +325,7 @@
             </div>
         </div>
         <div class="border-t border-sand/10 pt-8">
-            <p class="text-[10px] uppercase tracking-label text-sand/25">© {{ date('Y') }} AvtoBlog</p>
+            <p class="text-[10px] uppercase tracking-label text-sand/25">© <?php echo e(date('Y')); ?> AvtoBlog</p>
         </div>
     </div>
 </footer>
@@ -340,7 +340,7 @@
         <h2 class="font-display font-bold text-[26px] leading-tight mb-6">Оставить заявку</h2>
 
         <form class="lead-form-ajax space-y-4" data-type="general">
-            @csrf
+            <?php echo csrf_field(); ?>
             <input type="hidden" name="service_type" value="general">
             <div class="fld">
                 <label class="block text-[10px] uppercase tracking-label font-semibold text-muted mb-1">Тип лица</label>
@@ -436,7 +436,7 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Отправляем…';
 
-            fetch('{{ route("leads.store") }}', {
+            fetch('<?php echo e(route("leads.store")); ?>', {
                 method: 'POST', body: formData,
                 headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' }
             })
@@ -461,6 +461,28 @@
     });
 </script>
 
-<x-chatbot-widget />
+<?php if (isset($component)) { $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4 = $attributes; } ?>
+<?php $component = App\View\Components\ChatbotWidget::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('chatbot-widget'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\ChatbotWidget::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $attributes = $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $component = $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
 </body>
 </html>
+<?php /**PATH /Users/lianavaleeva/Herd/autoblog/resources/views/reviews.blade.php ENDPATH**/ ?>
