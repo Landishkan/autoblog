@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>АвтоБлог</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#FAF7F2] p-0">
+
+    <!-- Шапка -->
+    <header class="bg-[#4A5D6B] sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="text-2xl font-extrabold text-white tracking-tight">
+                    Avto<span class="text-[#C4907C]">Blog</span>
+                </a>
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="/" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Главная</a>
+                    <a href="/trade-in" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Trade‑In</a>
+                    <a href="/credit" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Кредит</a>
+                    <a href="/blog" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Блог</a>
+                    <a href="/reviews" class="text-white/70 hover:text-[#C4907C] transition-colors text-sm font-medium">Отзывы</a>
+                </nav>
+                <a href="#" class="hidden lg:inline-flex bg-[#C4907C] hover:bg-[#B07D6A] text-white font-bold px-5 py-2 rounded-lg text-sm transition-all">
+                    Оценить авто
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="py-16 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-[#8BA89A]/10 text-[#8BA89A] text-xs font-bold uppercase tracking-widest mb-6">
+                Онлайн-аукцион для продажи авто
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-[#3D4047] leading-none mb-4">
+                Продайте авто<br>
+                <span class="text-[#C4907C]">за 2 часа</span> без перекупов
+            </h1>
+            <p class="text-lg text-[#7A7D82] mb-10 max-w-xl mx-auto leading-relaxed">
+                Тысячи дилеров торгуются за вашу машину онлайн. Вы просто смотрите и выбираете лучшую цену.
+            </p>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-[#C4907C]/10 p-6 max-w-lg mx-auto">
+                <p class="text-sm text-[#7A7D82] mb-4 text-left">
+                    Введите госномер — данные заполнятся автоматически
+                </p>
+                <div class="space-y-4">
+                    <input type="text" placeholder="Госномер, например А123БВ177"
+                        class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] placeholder-[#7A7D82] focus:outline-none focus:border-[#C4907C] transition-all text-lg font-medium">
+                    <input type="tel" placeholder="+7 (___) ___-__-__"
+                        class="w-full bg-[#FAF7F2] border border-[#C4907C]/20 rounded-xl px-5 py-4 text-[#3D4047] placeholder-[#7A7D82] focus:outline-none focus:border-[#C4907C] transition-all text-lg font-medium">
+                </div>
+                <p class="text-xs text-[#7A7D82] mt-4 text-left">
+                    Введите свой номер телефона, чтобы с вами связался наш менеджер
+                </p>
+                <label class="flex items-start gap-3 mt-4 text-left cursor-pointer group">
+                    <input type="checkbox" class="mt-0.5 w-5 h-5 rounded border-[#C4907C]/30 text-[#C4907C] focus:ring-[#C4907C] cursor-pointer">
+                    <span class="text-xs text-[#7A7D82] group-hover:text-[#3D4047] transition-colors leading-relaxed">
+                        Я согласен с <a href="#" class="text-[#8BA89A] underline hover:text-[#C4907C]">правилами обработки данных</a> и <a href="#" class="text-[#8BA89A] underline hover:text-[#C4907C]">условиями сервиса</a>
+                    </span>
+                </label>
+                <button class="w-full bg-[#C4907C] hover:bg-[#B07D6A] text-white font-bold py-4 rounded-xl transition-all shadow-lg mt-5 text-lg">
+                    Узнать стоимость
+                </button>
+                <div class="flex items-center justify-center mt-5 space-x-4 text-xs text-[#7A7D82]">
+                    <span>Яндекс</span>
+                    <span>Сбер</span>
+                    <span>Альфа</span>
+                    <span>Т-Банк</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="text-3xl font-extrabold text-[#3D4047] mb-8 px-8">Наши автомобили</h2>
+
+    <!-- Карточки -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pb-12">
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $cars; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $car): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+            <div class="flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden border border-[#C4907C]/10 transition-transform hover:scale-[1.02]">
+                <div class="relative h-56 w-full bg-[#EEF1EB]">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($car->image): ?>
+                        <img src="<?php echo e(Storage::url($car->image)); ?>" class="w-full h-full object-cover" alt="<?php echo e($car->model); ?>">
+                    <?php else: ?>
+                        <div class="flex items-center justify-center h-full text-[#C4907C]/30">Нет фото</div>
+                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    <div class="absolute top-3 right-3 px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-wider shadow-md 
+                        <?php echo e($car->status === 'available' ? 'bg-[#8BA89A]' : 'bg-red-400'); ?> text-white">
+                        <?php echo e($car->status === 'available' ? 'В наличии' : 'Продано'); ?>
+
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="mb-4">
+                        <h3 class="text-xl font-bold text-[#3D4047] leading-tight"><?php echo e($car->brand); ?> <?php echo e($car->model); ?></h3>
+                        <p class="text-[#7A7D82] text-sm font-medium"><?php echo e($car->year); ?> года выпуска</p>
+                    </div>
+                    <p class="text-[#7A7D82] text-sm line-clamp-3 mb-6"><?php echo e($car->description ?? 'Описание уточняйте у менеджера'); ?></p>
+                    <div class="mt-auto">
+                        <div class="flex items-end justify-between mb-4">
+                            <span class="text-[#7A7D82] text-xs uppercase font-bold">Цена выкупа</span>
+                            <span class="text-2xl font-black text-[#C4907C]"><?php echo e(number_format($car->price, 0, '.', ',')); ?> ₽</span>
+                        </div>
+                        <button class="w-full bg-[#4A5D6B] hover:bg-[#3D4F5C] text-white py-4 rounded-xl font-extrabold uppercase text-xs tracking-widest transition-all shadow-lg active:scale-95">
+                            Узнать стоимость выкупа
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+    </div>
+
+    <!-- Блог -->
+    <section class="bg-[#4A5D6B] py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black text-white mb-12 text-center uppercase tracking-tighter">
+                Экспертный блог <span class="text-[#C4907C]">AutoBlog</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                <article class="flex flex-col bg-[#3D4F5C] rounded-2xl overflow-hidden border border-white/5 transition-all hover:border-[#C4907C]/50 group">
+                    <div class="relative h-52 overflow-hidden">
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($post->image): ?>
+                            <img src="<?php echo e(Storage::url($post->image)); ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="<?php echo e($post->title); ?>">
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#3D4F5C] to-transparent opacity-60"></div>
+                        <span class="absolute bottom-4 left-6 bg-[#8BA89A] text-white text-[10px] font-black uppercase px-3 py-1 rounded-full"><?php echo e($post->category); ?></span>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white leading-snug group-hover:text-[#C4907C] transition-colors"><?php echo e($post->title); ?></h3>
+                        <p class="text-gray-300 mt-4 text-sm leading-relaxed line-clamp-3"><?php echo e(strip_tags($post->content)); ?></p>
+                        <div class="mt-auto pt-6">
+                            <a href="#" class="text-xs font-bold text-[#C4907C] uppercase tracking-widest flex items-center group-hover:translate-x-2 transition-transform">
+                                Читать статью
+                                <svg class="w-4 h-4 ml-2 text-[#C4907C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="bg-[#EEF1EB] py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black text-[#3D4047] mb-4 text-center uppercase tracking-tighter">Реальные кейсы</h2>
+            <p class="text-[#7A7D82] text-center mb-16 max-w-2xl mx-auto">Посмотрите, какую выгоду получили наши клиенты при продаже авто через аукцион по сравнению с обычным трейд-ин.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                <div class="bg-white p-10 rounded-3xl border border-[#C4907C]/10 relative flex flex-col shadow-2xl">
+                    <div class="absolute -top-4 left-10 bg-[#8BA89A] p-3 rounded-xl shadow-lg">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21V18c0-1.1046.8954-2 2-2h3c.5523 0 1-.4477 1-1V9c0-.5523-.4477-1-1-1h-4c-.5523 0-1-.4477-1-1v3c0 .5523-.4477 1-1 1h-2c-.5523 0-1-.4477-1-1V9c0-1.1046.8954-2 2-2h7c1.6569 0 3 1.3431 3 3v5c0 2.7614-2.2386 5-5 5h-3v1zm-9 0V18c0-1.1046.89543-2 2-2h3c.5523 0 1-.4477 1-1V9c0-.5523-.4477-1-1-1H6c-.55228 0-1-.4477-1-1v3c0 .5523-.44772 1-1 1H2c-.55228 0-1-.4477-1-1V9c0-1.1046.89543-2 2-2h7c1.6569 0 3 1.3431 3 3v5c0 2.7614-2.2386 5-5 5H5v1z"/></svg>
+                    </div>
+                    <p class="text-[#3D4047]/70 italic leading-relaxed text-lg mb-8">"<?php echo e($review->text); ?>"</p>
+                    <div class="mt-auto border-t border-[#C4907C]/10 pt-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-bold text-[#3D4047] text-lg"><?php echo e($review->client_name); ?></div>
+                                <div class="text-xs text-[#7A7D82] uppercase tracking-widest mt-1"><?php echo e($review->car_model); ?></div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-[#7A7D82] uppercase font-bold">Выгода</div>
+                                <div class="text-[#8BA89A] font-black text-xl">+<?php echo e(number_format($review->profit_amount, 0, '.', ' ')); ?> ₽</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="bg-[#4A5D6B] py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+                <div>
+                    <span class="text-xl font-extrabold">Avto<span class="text-[#C4907C]">Blog</span></span>
+                    <p class="text-white/50 text-sm mt-2">Сервис продажи и обмена авто. Аукцион, трейд-ин и кредитование.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-3">Навигация</h3>
+                    <ul class="space-y-2 text-sm text-white/50">
+                        <li><a href="/trade-in" class="hover:text-[#C4907C]">Trade‑In</a></li>
+                        <li><a href="/credit" class="hover:text-[#C4907C]">Кредит</a></li>
+                        <li><a href="/blog" class="hover:text-[#C4907C]">Блог</a></li>
+                        <li><a href="/reviews" class="hover:text-[#C4907C]">Отзывы</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-3">Контакты</h3>
+                    <p class="text-[#C4907C] text-xl font-extrabold">8-800-123-45-67</p>
+                    <p class="text-white/50 text-sm">offer@avtoblog.ru</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="#" class="w-9 h-9 bg-[#8BA89A] rounded-full flex items-center justify-center text-white text-xs font-bold">TG</a>
+                        <a href="#" class="w-9 h-9 bg-[#8BA89A] rounded-full flex items-center justify-center text-white text-xs font-bold">YT</a>
+                        <a href="#" class="w-9 h-9 bg-[#8BA89A] rounded-full flex items-center justify-center text-white text-xs font-bold">VK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html><?php /**PATH D:\laragon\www\avtoblog\resources\views\welcome.blade.php ENDPATH**/ ?>

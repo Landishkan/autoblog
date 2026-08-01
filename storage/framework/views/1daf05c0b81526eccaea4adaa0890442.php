@@ -233,12 +233,12 @@
                         </svg>
                     </div>
                     <div class="bubble bot">
-                        <p>Привет! Я AI-ассистент AvtoBlog. Чем могу помочь?</p>
+                        <p>Привет! Я AI-ассистент AvtoBlog. Могу помочь в выборе автомобиля!</p>
                         <p class="stamp">Только что</p>
                     </div>
                 </div>
 
-                <div class="msg">
+                <!-- <div class="msg">
                     <div class="msg-avatar bot">
                         <svg class="w-4 h-4 text-sand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -253,7 +253,7 @@
                             <button onclick="sendQuickMessage('Контакты')" class="chip">Контакты</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="chat-input-bar">
