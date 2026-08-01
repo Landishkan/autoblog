@@ -228,8 +228,8 @@
 <!-- ============================== HERO ============================== -->
 <section class="hero flex items-center">
     <video autoplay muted loop playsinline preload="metadata"
-           poster="{{ asset('img/hero-poster.jpg') }}?v=3">
-        <source src="{{ asset('video/hero.mp4') }}?v=3" type="video/mp4">
+           poster="<?php echo e(asset('img/hero-poster.jpg')); ?>?v=3">
+        <source src="<?php echo e(asset('video/hero.mp4')); ?>?v=3" type="video/mp4">
     </video>
     <div class="hero-scrim"></div>
 
@@ -279,7 +279,7 @@
                     <h2 class="font-display font-bold text-[24px] leading-tight mt-2 mb-5">Оцените ваше авто</h2>
 
                     <form class="lead-form-ajax space-y-3.5" data-type="general">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <input type="hidden" name="service_type" value="general">
 
                         <div class="fld">
@@ -329,30 +329,32 @@
             <div class="rule mt-9 max-w-[90px]" style="--d:260ms"></div>
         </div>
 
-        @php
+        <?php
             $stepIcons = [
                 '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"/>',
                 '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h4M8 3h8a2 2 0 012 2v15l-3-2-2 2-2-2-2 2-3-2V5a2 2 0 012-2z"/>',
                 '<path stroke-linecap="round" stroke-linejoin="round" d="M12 7v10m3-7.5c0-1.1-1.3-2-3-2s-3 .9-3 2 1.3 2 3 2 3 .9 3 2-1.3 2-3 2-3-.9-3-2M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
                 '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>',
             ];
-        @endphp
+        ?>
 
         <div class="hair-grid md:grid-cols-3">
-            @foreach($steps as $step)
-            <div class="step rise p-9 lg:p-12" style="--d:{{ $loop->index * 140 }}ms">
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $steps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $step): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+            <div class="step rise p-9 lg:p-12" style="--d:<?php echo e($loop->index * 140); ?>ms">
                 <div class="flex items-start justify-between mb-12">
                     <svg class="step-icon w-7 h-7 text-clay" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24">
-                        {!! $stepIcons[$loop->index % count($stepIcons)] !!}
+                        <?php echo $stepIcons[$loop->index % count($stepIcons)]; ?>
+
                     </svg>
                     <span class="font-display font-bold text-[46px] leading-none text-sand/15">
-                        {{ str_pad($step->order, 2, '0', STR_PAD_LEFT) }}
+                        <?php echo e(str_pad($step->order, 2, '0', STR_PAD_LEFT)); ?>
+
                     </span>
                 </div>
-                <h3 class="font-display font-bold text-[24px] leading-snug mb-4">{{ $step->title }}</h3>
-                <p class="text-sand/50 text-[15px] leading-relaxed">{{ $step->description }}</p>
+                <h3 class="font-display font-bold text-[24px] leading-snug mb-4"><?php echo e($step->title); ?></h3>
+                <p class="text-sand/50 text-[15px] leading-relaxed"><?php echo e($step->description); ?></p>
             </div>
-            @endforeach
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
         </div>
     </div>
 </section>
@@ -371,38 +373,40 @@
         <div class="rise relative pb-24" style="--d:180ms">
             <div class="swiper reviewsSwiper">
                 <div class="swiper-wrapper">
-                    @foreach($reviews as $review)
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
                     <div class="swiper-slide">
                         <figure class="h-full flex flex-col border-t border-sand/15 pt-8">
                             <div class="flex gap-1 mb-7">
-                                @for($i = 1; $i <= 5; $i++)
-                                    <svg class="w-3.5 h-3.5 {{ $i <= $review->rating ? 'text-clay' : 'text-sand/15' }}" fill="currentColor" viewBox="0 0 20 20">
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                                    <svg class="w-3.5 h-3.5 <?php echo e($i <= $review->rating ? 'text-clay' : 'text-sand/15'); ?>" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 1.6l2.35 5.05 5.4.55-4.05 3.7 1.15 5.35L10 13.5l-4.85 2.75 1.15-5.35L2.25 7.2l5.4-.55L10 1.6z"/>
                                     </svg>
-                                @endfor
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                             </div>
 
                             <blockquote class="font-medium text-[18px] leading-[1.6] text-sand/95 flex-grow">
-                                {{ $review->text }}
+                                <?php echo e($review->text); ?>
+
                             </blockquote>
 
                             <figcaption class="flex items-center gap-4 mt-9 pt-7 border-t border-sand/10">
-                                @if($review->client_photo)
-                                    <img src="{{ Storage::url($review->client_photo) }}"
-                                         class="w-11 h-11 rounded-full object-cover grayscale" alt="{{ $review->client_name }}">
-                                @else
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($review->client_photo): ?>
+                                    <img src="<?php echo e(Storage::url($review->client_photo)); ?>"
+                                         class="w-11 h-11 rounded-full object-cover grayscale" alt="<?php echo e($review->client_name); ?>">
+                                <?php else: ?>
                                     <span class="w-11 h-11 rounded-full border border-clay/45 flex items-center justify-center font-display font-bold text-[17px] text-clay">
-                                        {{ mb_substr($review->client_name, 0, 1) }}
+                                        <?php echo e(mb_substr($review->client_name, 0, 1)); ?>
+
                                     </span>
-                                @endif
+                                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                                 <span>
-                                    <span class="block text-[13px] font-semibold">{{ $review->client_name }}</span>
-                                    <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-1">{{ $review->car_model }}</span>
+                                    <span class="block text-[13px] font-semibold"><?php echo e($review->client_name); ?></span>
+                                    <span class="block text-[10px] uppercase tracking-label text-sand/40 mt-1"><?php echo e($review->car_model); ?></span>
                                 </span>
                             </figcaption>
                         </figure>
                     </div>
-                    @endforeach
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                 </div>
             </div>
 
@@ -452,7 +456,7 @@
         </div>
 
         <div class="border-t border-sand/10 pt-8">
-            <p class="text-[10px] uppercase tracking-label text-sand/25">© {{ date('Y') }} AvtoBlog</p>
+            <p class="text-[10px] uppercase tracking-label text-sand/25">© <?php echo e(date('Y')); ?> AvtoBlog</p>
         </div>
     </div>
 </footer>
@@ -535,7 +539,7 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Отправляем…';
 
-            fetch('{{ route("leads.store") }}', {
+            fetch('<?php echo e(route("leads.store")); ?>', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -573,6 +577,28 @@
     });
 </script>
 
-<x-chatbot-widget />
+<?php if (isset($component)) { $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4 = $attributes; } ?>
+<?php $component = App\View\Components\ChatbotWidget::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('chatbot-widget'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\ChatbotWidget::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $attributes = $__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__attributesOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4)): ?>
+<?php $component = $__componentOriginal5e76654ad61b72e653a8a6783d7e13d4; ?>
+<?php unset($__componentOriginal5e76654ad61b72e653a8a6783d7e13d4); ?>
+<?php endif; ?>
 </body>
 </html>
+<?php /**PATH /Users/lianavaleeva/Herd/autoblog/resources/views/home.blade.php ENDPATH**/ ?>

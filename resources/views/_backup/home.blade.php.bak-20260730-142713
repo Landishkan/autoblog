@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AvtoBlog — выкуп автомобилей</title>
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233D4047'/%3E%3Cpath d='M7 19.5h18M9.5 19.5l1.8-4.6a2.5 2.5 0 0 1 2.3-1.6h5.2a2.5 2.5 0 0 1 2 1l3.2 4.2' stroke='%23C4907C' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11.5' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='none' stroke='%23FAF7F2' stroke-width='1.4'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%233D4047%27/%3E%3Cpath%20d%3D%27M6%2026L15.3%206.6a.8.8%200%200%201%201.4%200L26%2026%27%20stroke%3D%27%23C4907C%27%20stroke-width%3D%273%27%20fill%3D%27none%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27/%3E%3Cline%20x1%3D%2711%27%20y1%3D%2717.4%27%20x2%3D%2721%27%20y2%3D%2717.4%27%20stroke%3D%27%23C4907C%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -228,8 +228,8 @@
 <!-- ============================== HERO ============================== -->
 <section class="hero flex items-center">
     <video autoplay muted loop playsinline preload="metadata"
-           poster="{{ asset('img/hero-poster.jpg') }}?v=3">
-        <source src="{{ asset('video/hero.mp4') }}?v=3" type="video/mp4">
+           poster="{{ asset('img/hero-poster.jpg') }}">
+        <source src="{{ asset('video/hero.mp4') }}" type="video/mp4">
     </video>
     <div class="hero-scrim"></div>
 
